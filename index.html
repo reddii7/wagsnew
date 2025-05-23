@@ -7,6 +7,8 @@
     <title>wagsnew</title>
     <link rel="stylesheet" href="style.css">
     <!-- Link to the manifest file -->
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,6 +32,11 @@
             <div class="plus-icon-bottom-right"></div>
         </div>
 
+           <div class="hcap-card">
+            <span class="card-hcaps-text">Leagues</span>
+            <div class="plus-icon-bottom-right"></div>
+        </div>
+
     </main>
 
     <script>
@@ -41,6 +48,29 @@
                     console.error('Service Worker registration failed:', error);
                 });
         }
+
+        // GSAP Card Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure GSAP is loaded
+            if (typeof gsap === 'undefined') {
+                console.error('GSAP not loaded! Make sure the CDN link is correct and loads before this script.');
+                return;
+            }
+
+            // Select all card elements
+            const cards = gsap.utils.toArray('.scores-card, .hcap-card');
+
+            if (cards.length > 0) {
+                gsap.from(cards, {
+                    duration: 0.8,      // Animation duration for each card
+                    opacity: 0,         // Start with opacity 0
+                    y: 50,              // Start 50px down
+                    stagger: 0.2,       // Delay between each card's animation
+                    ease: "power2.out", // Easing function for a smooth effect
+                    delay: 0.3          // Optional: delay before the first card starts animating
+                });
+            }
+        });
     </script>
 </body>
 
