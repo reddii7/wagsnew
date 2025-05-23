@@ -1,0 +1,96 @@
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(27, 27, 27);
+    color: #f4f4f4; /* Changed to a light color for contrast with dark background */
+}
+
+header {
+    background-color: #317EFB;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+}
+
+.scores-card {
+    height: 255px;
+    background-color: rgb(153, 177, 220);
+    border-radius: 25px; /* For large round corners */
+    padding: 20px; /* Adds some space inside the card for content */
+    box-sizing: border-box; /* Ensures padding is included within the height */
+    margin-top: 20px; /* Adds some space above this card */
+    color: #000000; /* A darker text color for better readability on the blueish background */
+    position: relative; /* Establishes a positioning context for absolute children */
+}
+
+.hcap-card {
+    height: 510px;
+    background-color: rgb(67, 67, 67);
+    border-radius: 25px; /* For large round corners */
+    padding: 20px; /* Adds some space inside the card for content */
+    box-sizing: border-box; /* Ensures padding is included within the height */
+    margin-top: 20px; /* Adds some space above this card */
+    color: #000000; /* A darker text color for better readability on the blueish background */
+    position: relative; /* Establishes a positioning context for absolute children */
+}
+
+.card-scores-text {
+    position: absolute;
+    bottom: 10px; /* Corresponds to the card's bottom padding */
+    left: 20px;   /* Corresponds to the card's left padding */
+    font-size: 48px; /* Adjust as needed for "large" font */
+    font-weight: 600;
+    letter-spacing: -2.4px;
+    /* The color will be inherited from .new-styled-card (#333),
+       or you can set a specific color here if desired. */
+}
+
+.card-hcaps-text {
+    position: absolute;
+    bottom: 10px; /* Corresponds to the card's bottom padding */
+    left: 20px;   /* Corresponds to the card's left padding */
+    font-size: 48px; /* Adjust as needed for "large" font */
+    font-weight: 600;
+    letter-spacing: -2.4px; 
+    color: rgb(153, 177, 220); /* Updated font color */
+    /* The color was previously inherited from .hcap-card */
+}
+
+.plus-icon-bottom-right {
+    position: absolute;
+    bottom: 25px; /* Aligns with card-scores-text's bottom offset */
+    right: 20px;  /* Respects card's right padding */
+    width: 25px;  /* Defines the size of the icon's bounding box */
+    height: 25px; /* Defines the size of the icon's bounding box */
+    cursor: pointer; /* Indicates it's interactive */
+}
+
+.plus-icon-bottom-right::before,
+.plus-icon-bottom-right::after {
+    content: '';
+    position: absolute;
+    background-color: #000000; /* Icon color, matches .new-styled-card text color */
+}
+
+/* Horizontal line of the plus */
+.plus-icon-bottom-right::before {
+    left: 0;
+    right: 0; /* Makes the line span the full width of the container */
+    top: 50%; /* Positions the top of the line at the vertical center */
+    height: 2px; /* Thickness of the line */
+    transform: translateY(-1px); /* Adjusts to truly center the 2px line */
+}
+
+/* Vertical line of the plus */
+.plus-icon-bottom-right::after {
+    top: 0;
+    bottom: 0; /* Makes the line span the full height of the container */
+    left: 50%; /* Positions the left of the line at the horizontal center */
+    width: 2px; /* Thickness of the line */
+    transform: translateX(-1px); /* Adjusts to truly center the 2px line */
+}
