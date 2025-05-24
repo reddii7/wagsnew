@@ -34,8 +34,18 @@
             <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
-           <div class="card-gray-lg">
-            <span class="text-blue">Best 14</span>
+           <div class="card-green-lg">
+            <span class="text-gray">Best 14</span>
+            <i class="fas fa-plus plus-icon-bottom-right"></i>
+        </div>
+
+              <div class="card-coral-med">
+            <span class="text-gray">Leagues</span>
+            <i class="fas fa-plus plus-icon-bottom-right"></i>
+        </div>
+
+         <div class="card-gray-lg">
+            <span class="text-blue">RS Cup</span>
             <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
@@ -60,7 +70,7 @@
             }
 
             // Select all card elements
-            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg');
+            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-green-lg, .card-coral-med');
 
             if (cards.length > 0) {
                 gsap.from(cards, {

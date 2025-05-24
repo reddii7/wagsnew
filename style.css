@@ -28,9 +28,31 @@ main {
     position: relative; /* Establishes a positioning context for absolute children */
 }
 
+.card-coral-med {
+    height: 255px;
+    background-color: rgb(240, 158, 129);
+    border-radius: 25px; /* For large round corners */
+    padding: 20px; /* Adds some space inside the card for content */
+    box-sizing: border-box; /* Ensures padding is included within the height */
+    margin-top: 20px; /* Adds some space above this card */
+    color: #000000; /* A darker text color for better readability on the blueish background */
+    position: relative; /* Establishes a positioning context for absolute children */
+}
+
 .card-gray-lg {
     height: 510px;
     background-color: rgb(67, 67, 67);
+    border-radius: 25px; /* For large round corners */
+    padding: 20px; /* Adds some space inside the card for content */
+    box-sizing: border-box; /* Ensures padding is included within the height */
+    margin-top: 20px; /* Adds some space above this card */
+    color: #000000; /* A darker text color for better readability on the blueish background */
+    position: relative; /* Establishes a positioning context for absolute children */
+}
+
+.card-green-lg {
+    height: 510px;
+    background-color: rgb(157, 196, 201);
     border-radius: 25px; /* For large round corners */
     padding: 20px; /* Adds some space inside the card for content */
     box-sizing: border-box; /* Ensures padding is included within the height */
@@ -46,6 +68,7 @@ main {
     font-size: 48px; /* Adjust as needed for "large" font */
     font-weight: 600;
     letter-spacing: -2.4px;
+    color: rgb(44, 79, 83); /* Updated font color */
     /* The color will be inherited from .new-styled-card (#333),
        or you can set a specific color here if desired. */
 }
