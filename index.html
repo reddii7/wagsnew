@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Link to the manifest file -->
     <!-- GSAP Library -->
+    <!-- Font Awesome CDN (ensure you have the latest version if preferred) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,19 +24,19 @@
     <main>
 
 
-        <div class="scores-card">
-            <span class="card-scores-text">Scores</span>
-            <div class="plus-icon-bottom-right"></div>
+        <div class="card-blue-med">
+            <span class="text-gray">Scores</span>
+            <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
-         <div class="hcap-card">
-            <span class="card-hcaps-text">Handicaps</span>
-            <div class="plus-icon-bottom-right"></div>
+         <div class="card-gray-lg">
+            <span class="text-blue">Handicaps</span>
+            <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
-           <div class="hcap-card">
-            <span class="card-hcaps-text">Best 14</span>
-            <div class="plus-icon-bottom-right"></div>
+           <div class="card-gray-lg">
+            <span class="text-blue">Best 14</span>
+            <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
     </main>
@@ -58,7 +60,7 @@
             }
 
             // Select all card elements
-            const cards = gsap.utils.toArray('.scores-card, .hcap-card');
+            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg');
 
             if (cards.length > 0) {
                 gsap.from(cards, {

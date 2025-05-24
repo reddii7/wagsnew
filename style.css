@@ -17,7 +17,7 @@ main {
     padding: 1em;
 }
 
-.scores-card {
+.card-blue-med {
     height: 255px;
     background-color: rgb(153, 177, 220);
     border-radius: 25px; /* For large round corners */
@@ -28,7 +28,7 @@ main {
     position: relative; /* Establishes a positioning context for absolute children */
 }
 
-.hcap-card {
+.card-gray-lg {
     height: 510px;
     background-color: rgb(67, 67, 67);
     border-radius: 25px; /* For large round corners */
@@ -39,7 +39,7 @@ main {
     position: relative; /* Establishes a positioning context for absolute children */
 }
 
-.card-scores-text {
+.text-gray {
     position: absolute;
     bottom: 10px; /* Corresponds to the card's bottom padding */
     left: 20px;   /* Corresponds to the card's left padding */
@@ -50,47 +50,26 @@ main {
        or you can set a specific color here if desired. */
 }
 
-.card-hcaps-text {
+.text-blue {
     position: absolute;
     bottom: 10px; /* Corresponds to the card's bottom padding */
     left: 20px;   /* Corresponds to the card's left padding */
     font-size: 48px; /* Adjust as needed for "large" font */
     font-weight: 600;
-    letter-spacing: -2.4px; 
+    letter-spacing: -2.4px;
     color: rgb(153, 177, 220); /* Updated font color */
-    /* The color was previously inherited from .hcap-card */
+    /* The color was previously inherited from .card-gray-lg */
 }
 
 .plus-icon-bottom-right {
     position: absolute;
-    bottom: 25px; /* Aligns with card-scores-text's bottom offset */
-    right: 20px;  /* Respects card's right padding */
-    width: 25px;  /* Defines the size of the icon's bounding box */
-    height: 25px; /* Defines the size of the icon's bounding box */
-    cursor: pointer; /* Indicates it's interactive */
+    bottom: 20px; /* Adjust as needed for vertical spacing from the bottom */
+    right: 20px;  /* Adjust as needed for horizontal spacing from the right */
+    font-size: 2em; /* Or your preferred size, e.g., 24px */
+    font-weight: 300; /* Try lighter font weights: 100, 300, 400, or 'lighter' */
+    /* color: #your-icon-color; */ /* Optional: if you want a specific color */
 }
 
-.plus-icon-bottom-right::before,
-.plus-icon-bottom-right::after {
-    content: '';
-    position: absolute;
-    background-color: #000000; /* Icon color, matches .new-styled-card text color */
-}
-
-/* Horizontal line of the plus */
-.plus-icon-bottom-right::before {
-    left: 0;
-    right: 0; /* Makes the line span the full width of the container */
-    top: 50%; /* Positions the top of the line at the vertical center */
-    height: 2px; /* Thickness of the line */
-    transform: translateY(-1px); /* Adjusts to truly center the 2px line */
-}
-
-/* Vertical line of the plus */
-.plus-icon-bottom-right::after {
-    top: 0;
-    bottom: 0; /* Makes the line span the full height of the container */
-    left: 50%; /* Positions the left of the line at the horizontal center */
-    width: 2px; /* Thickness of the line */
-    transform: translateX(-1px); /* Adjusts to truly center the 2px line */
+.card-gray-lg .plus-icon-bottom-right {
+    color: rgb(153, 177, 220);
 }
