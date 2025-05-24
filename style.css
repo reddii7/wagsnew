@@ -17,71 +17,58 @@ main {
     padding: 1em;
 }
 
-.card-blue-med {
+/* Common Card Styles */
+.card-blue-med,
+.card-coral-med,
+.card-gray-lg,
+.card-teal-lg {
     height: 255px;
+    border-radius: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    position: relative;
+}
+
+.card-blue-med {
     background-color: rgb(153, 177, 220);
-    border-radius: 25px; /* For large round corners */
-    padding: 20px; /* Adds some space inside the card for content */
-    box-sizing: border-box; /* Ensures padding is included within the height */
-    margin-top: 20px; /* Adds some space above this card */
-    color: #000000; /* A darker text color for better readability on the blueish background */
-    position: relative; /* Establishes a positioning context for absolute children */
+    color: #000000; /* Dark text on light blue background */
 }
 
 .card-coral-med {
-    height: 255px;
     background-color: rgb(240, 158, 129);
-    border-radius: 25px; /* For large round corners */
-    padding: 20px; /* Adds some space inside the card for content */
-    box-sizing: border-box; /* Ensures padding is included within the height */
-    margin-top: 20px; /* Adds some space above this card */
-    color: #000000; /* A darker text color for better readability on the blueish background */
-    position: relative; /* Establishes a positioning context for absolute children */
+    color: #000000; /* Dark text on light coral background */
 }
 
 .card-gray-lg {
     height: 510px;
     background-color: rgb(67, 67, 67);
-    border-radius: 25px; /* For large round corners */
-    padding: 20px; /* Adds some space inside the card for content */
-    box-sizing: border-box; /* Ensures padding is included within the height */
-    margin-top: 20px; /* Adds some space above this card */
-    color: #000000; /* A darker text color for better readability on the blueish background */
-    position: relative; /* Establishes a positioning context for absolute children */
+    color: inherit; /* Inherits light text color from body for better contrast on dark gray */
 }
 
 .card-teal-lg {
     height: 510px;
     background-color: rgb(157, 196, 201);
-    border-radius: 25px; /* For large round corners */
-    padding: 20px; /* Adds some space inside the card for content */
-    box-sizing: border-box; /* Ensures padding is included within the height */
-    margin-top: 20px; /* Adds some space above this card */
-    color: #000000; /* A darker text color for better readability on the blueish background */
-    position: relative; /* Establishes a positioning context for absolute children */
+    color: #000000; /* Dark text on light teal background */
+}
+
+/* Common styles for absolutely positioned text within cards */
+.text-gray,
+.text-blue {
+    position: absolute;
+    bottom: 20px; /* Aligns with card padding */
+    left: 20px;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -2.4px;
 }
 
 .text-gray {
-    position: absolute;
-    bottom: 10px; /* Corresponds to the card's bottom padding */
-    left: 20px;   /* Corresponds to the card's left padding */
-    font-size: 48px; /* Adjust as needed for "large" font */
-    font-weight: 600;
-    letter-spacing: -2.4px;
-    color: rgb(44, 79, 83); /* Updated font color */
-    /* The color will be inherited from .new-styled-card (#333),
-       or you can set a specific color here if desired. */
+    color: rgb(44, 79, 83);
 }
 
 .text-blue {
-    position: absolute;
-    bottom: 10px; /* Corresponds to the card's bottom padding */
-    left: 20px;   /* Corresponds to the card's left padding */
-    font-size: 48px; /* Adjust as needed for "large" font */
-    font-weight: 600;
-    letter-spacing: -2.4px;
-    color: rgb(153, 177, 220); /* Updated font color */
-    /* The color was previously inherited from .card-gray-lg */
+    color: rgb(153, 177, 220);
 }
 
 .plus-icon-bottom-right {
@@ -89,196 +76,99 @@ main {
     bottom: 20px; /* Adjust as needed for vertical spacing from the bottom */
     right: 20px;  /* Adjust as needed for horizontal spacing from the right */
     font-size: 2em; /* Or your preferred size, e.g., 24px */
-    font-weight: 300; /* Try lighter font weights: 100, 300, 400, or 'lighter' */
-    /* color: #your-icon-color; */ /* Optional: if you want a specific color */
+    font-weight: 300; /* Lighter font weight for a thinner look */
 }
 
 .card-gray-lg .plus-icon-bottom-right {
     color: rgb(153, 177, 220);
 }
-
-/* Add this to your style.css file */
-
-.card-scores {
-    background-color: rgb(67, 67, 67);
-    color: #f4f4f4; /* Assuming light text on this dark card, like .card-gray-lg */
-    border-radius: 25px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-top: 20px;
-    position: relative;
-
-}
-
-/* Optional: If you add a plus icon or specific text styling */
-/*
-.card-scores .text-blue {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: -2.4px;
-    color: rgb(153, 177, 220);
-}
-
-.card-scores .plus-icon-bottom-right {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 2em;
-    font-weight: 300;
-    color: rgb(153, 177, 220);
-}
-*/
-/* Add or modify these styles in your style.css */
-
-.card-scores {
-    /* ... your existing .card-scores styles ... */
-    /* Ensure it has padding if you want space between table and card edges */
-    padding: 20px;
-}
-
-.card-scores .card-title {
-    font-size: 1.5em; /* Or your preferred size */
-    font-weight: 600;
-    margin-bottom: 1em; /* Space between title and table */
-    color: #f4f4f4; /* Assuming light text on dark card */
-    text-align: center;
-}
-
-.scores-table {
-    width: 100%; /* Makes the table take the full width of its container (.card-scores) */
-    border-collapse: collapse; /* Removes default spacing between cell borders for a cleaner look */
-    /* background-color: rgb(157, 196, 201); */ /* Table background will be handled by page-specific or card styles */
-    font-size: 1em; /* Base font size for table content */
-    color: #e0e0e0; /* Slightly lighter text for table data for subtle contrast */
-}
-.scores-table th,
-.scores-table td {
-    padding: 0.75em 1em; /* Adjust padding for cell spacing (top/bottom, left/right) */
-    text-align: left; /* Default alignment for all cells */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Thinner appearing (semi-transparent) white line */
-}
-
-.scores-table thead th { /* Style for header cells */
-    font-weight: 600;
-    color: rgb(255, 255, 255); /* A distinct color for headers, e.g., your theme's accent blue */
-    border-bottom-width: 1px; /* Thinner line below the header row */
-    border-bottom-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white line for header */
-}
-
-/* To ensure the last row doesn't have a bottom border */
-.scores-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Your existing .text-right class for aligning score column */
-.text-right {
-    text-align: right;
-}
-
-/* --- Light Theme Overrides (if you have them) --- *//* Add this to your style.css file */
-
-.plus-icon-link,
-.plus-icon-link:visited,
-.plus-icon-link:hover,
-.plus-icon-link:active {
-    text-decoration: none; /* Removes the underline from the link */
-    color: inherit;        /* Makes the link (and thus the icon inside it) 
-                               inherit its color from its parent element. 
-                               The icon's own specific color styles (like those 
-                               for .plus-icon-bottom-right within .card-blue-med)
-                               should still take precedence and apply correctly. */
-}
-
-/* --- Close Page Link ('X' icon) --- */
-/* General hover state for .close-page-link, color will be overridden by more specific rules */
-.close-page-link:hover {
-    color: rgb(153, 177, 220); /* Example hover color - your theme's accent */
-    transform: scale(1.1); /* Slight zoom on hover */
-}
-
-/* If you have a light theme and want the X to adapt */
-body.light-theme .close-page-link {
-    /* color: #333333; */ /* This is overridden by scores-page-background specific rule if on that page */
-}
-
-/* Ensure the icon itself doesn't get overridden by link styles if it has its own */
-.close-page-link .fas.fa-times {
-    font-size: 1.8em; /* Explicitly set the icon size */
-    display: block;     /* Recommended for Font Awesome for better layout control */
-    line-height: 1;     /* Can help with vertical alignment */
-}
-
-/* Adjust card containing the table on scores page */
-body.scores-page-background .card-scores {
-    background-color: rgb(153, 177, 220); /* Match page background */
-    color: #000000; /* Black text within this card */
-    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */ /* Optional: add a subtle shadow if card blends too much */
-}
-
-body.scores-page-background .card-scores .card-title {
-    color: #000000; /* Black title */
-}
-
-body.scores-page-background .scores-table {
-    background-color: rgb(153, 177, 220); /* Table background matches page/card */
-    color: #000000; /* Black text for table content */
-}
-
-body.scores-page-background .scores-table th,
-body.scores-page-background .scores-table td {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* Darker, subtle line for the new background */
-}
-
-body.scores-page-background .scores-table thead th {
-    color: #000000; /* Black header text */
-    border-bottom-color: rgba(0, 0, 0, 0.25); /* Slightly more prominent dark line for header */
-}
-
-body.scores-page-background .scores-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Add or ensure these styles are in your style.css */
-
-#page-transition-overlay {
-    position: fixed;
-    top: 0;
+/* Modal Styles */
+.modal {
+    /* display: none; /* GSAP's autoAlpha will handle visibility, so display:none is not strictly needed if opacity and visibility are set */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
     left: 0;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    background-color: rgb(27, 27, 27); /* THIS SHOULD BE THE BG COLOR OF THE PREVIOUS PAGE (index.html) */
-    z-index: 10000; /* Very high to be on top of everything initially */
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity for the overlay */
+    
+    /* Initial state for GSAP: hidden and transparent */
+    opacity: 0;
+    visibility: hidden;
+
+    /* Flexbox for centering modal content easily */
+    display: flex;
+    align-items: flex-start; /* Align content to the start (top) of the flex container */
+    justify-content: center;
+    padding-top: 2vh; /* Push the content down from the top. Was 10vh, try 5vh or e.g., 50px */
 }
 
-/* --- Page Specific Styles --- */
-/* Default body styles for scores page (scores-page-background) */
-body.scores-page-background {
-    background-color: rgb(153, 177, 220); /* THIS IS THE TARGET BG COLOR FOR scores.html */
-    color: #000000; /* Default text color for scores page */
-    /* ... other styles for scores-page-background ... */
+.modal-content {
+    background-color: rgb(27, 27, 27); /* Primary blue, similar to a blue card */
+    color: #f8f9fa; /* Light text color for contrast on blue background */
+    margin: auto; /* Handled by flexbox, but good fallback */
+    padding: 20px;
+    border-radius: 25px; /* More rounded, card-like corners */
+ 
+    width: 90%; /* Responsive width */
+   
+    position: relative; /* For positioning the close button */
+    text-align: left; /* Default text alignment */
+    border: 0px solid rgba(255, 255, 255, 0.2); /* Optional: subtle border */
+
+    /* Initial state for GSAP animation: hidden, transparent, and slightly offset */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30px); /* Start slightly above, will animate to translateY(0) */
 }
 
-/* Consolidated and definitive .close-page-link styles */
-.close-page-link {
-    position: fixed;
-    top: 20px;
-    right: 25px;
-    font-size: 1.8em; /* This is the target size for the link and thus the icon */
-    z-index: 10001;   /* To be above page transition overlay */
+.close-button {
+    color: #e0e0e0; /* Light gray for visibility on blue */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1; /* Ensure consistent vertical alignment */
+    transition: color 0.2s ease-in-out;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #ffffff; /* White on hover/focus */
     text-decoration: none;
-    color: #f4f4f4;     /* Default color (e.g., for dark theme on index.html if used there) */
-    transition: color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
-/* Specific color for close link on scores page */
-body.scores-page-background .close-page-link {
-    color: #000000; /* Black 'X' icon on the blueish scores page background */
+/* Optional: Basic styling for content inside the modal */
+.modal-content h2 {
+    margin-top: 0;
+    color: #ffffff; /* White title text */
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px; /* More space below title */
 }
-body.scores-page-background .close-page-link:hover {
-    color: #333333; /* Darker gray hover for 'X' on scores page */
-    /* transform: scale(1.1); is inherited from the general .close-page-link:hover */
+
+.modal-content p {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
-/* ... other styles ... */
+
+/* Ensure table text is also light */
+.modal-content .scores-table th,
+.modal-content .scores-table td {
+    color: #f0f0f0; /* Light text for table content */
+    padding-top: 10px; /* Add top padding */
+    padding-bottom: 10px; /* Add bottom padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Subtle light borders for rows */
+}
+
+/* Style for table headers specifically */
+.modal-content .scores-table th {
+    font-weight: 600;
+    color: #ffffff; /* White for headers */
+    border-bottom-width: 2px; /* Stronger border under headers */
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}

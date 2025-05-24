@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wagsnew</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Link to the manifest file -->
+    <link rel="stylesheet" href="style.css">    
     <!-- GSAP Library -->
-    <!-- Font Awesome CDN (ensure you have the latest version if preferred) -->
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
     <!-- Theme color for browser UI -->
-    <meta name="theme-color" content="rgb(27, 27, 27)" />
+    <meta name="theme-color" content="rgb(26, 26, 26)" />
 </head>
 
 <body>
@@ -53,6 +52,59 @@
 
     </main>
 
+    <!-- Scores Modal -->
+    <div id="scoresModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Week 06</h2>
+            <table class="scores-table" style="width: 100%; margin-bottom: 15px;">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th class="text-center">Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <td>CHRIS BOARDS</td><td class="text-center">25</td></tr>
+                    <tr> <td>PAUL SMITH</td><td class="text-center">20</td></tr>
+                    <tr> <td>JAMES TOUGH</td><td class="text-center">19</td></tr>
+                    <tr> <td>JEZ WILLIAMS</td><td class="text-center">18</td></tr>
+                    <tr> <td>MARC ALLSOPP</td><td class="text-center">18</td></tr>
+                    <tr> <td>MARK MOSLEY</td><td class="text-center">18</td></tr>
+                    <tr> <td>MARK READY</td><td class="text-center">18</td></tr>
+                    <tr> <td>RICHARD SHAW</td><td class="text-center">18</td></tr>
+                    <tr> <td>ANDY RAY</td><td class="text-center">17</td></tr>
+                    <tr> <td>BRIAN ELLIOT</td><td class="text-center">17</td></tr>
+                    <tr> <td>CRAIG MILLIGAN</td><td class="text-center">17</td></tr>
+                    <tr> <td>KEVIN HORTON</td><td class="text-center">17</td></tr>
+                    <tr> <td>JON BODEN</td><td class="text-center">16</td></tr>
+                    <tr> <td>RICHARD BIRD</td><td class="text-center">16</td></tr>
+                    <tr> <td>TIM ALLSOPP</td><td class="text-center">16</td></tr>
+                    <tr> <td>TOM GREEN</td><td class="text-center">16</td></tr>
+                    <tr> <td>ADAM TEALE</td><td class="text-center">15</td></tr>
+                    <tr> <td>ADE COOPER</td><td class="text-center">15</td></tr>
+                    <tr> <td>DAVE HARRISON</td><td class="text-center">15</td></tr>
+                    <tr> <td>PAUL BLADES</td><td class="text-center">15</td></tr>
+                    <tr> <td>RICHARD CRAVEN JONES</td><td class="text-center">14</td></tr>
+                    <tr> <td>STEPHEN WALLACE</td><td class="text-center">14</td></tr>
+                    <tr> <td>TONY MYNARD</td><td class="text-center">14</td></tr>
+                    <tr> <td>ADAM SIMCOX</td><td class="text-center">13</td></tr>
+                    <tr> <td>IAN IND</td><td class="text-center">13</td></tr>
+                    <tr> <td>LES LAWRENCE</td><td class="text-center">13</td></tr>
+                    <tr> <td>STUART MURDOCK</td><td class="text-center">13</td></tr>
+                    <tr> <td>JOHN GOODMAN</td><td class="text-center">12</td></tr>
+                    <tr> <td>JON MURCHINGTON</td><td class="text-center">12</td></tr>
+                    <tr> <td>STEVE ROBINSON</td><td class="text-center">12</td></tr>
+                    <tr> <td>TIM LEWIS</td><td class="text-center">12</td></tr>
+                    <tr> <td>GARY ADCOCK</td><td class="text-center">11</td></tr>
+                    <tr> <td>MARTIN STEVENSON</td><td class="text-center">11</td></tr>
+                    <tr> <td>STEVE SUCH</td><td class="text-center">11</td></tr>
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+
     <script>
         // Register the service worker
         if ('serviceWorker' in navigator) {
@@ -85,26 +137,68 @@
                 });
             }
 
-            // Transition for Scores link
+            // Modal elements
+            const scoresModal = document.getElementById('scoresModal');
+            const scoresModalContent = scoresModal ? scoresModal.querySelector('.modal-content') : null;
+            const closeModalButton = scoresModal ? scoresModal.querySelector('.close-button') : null;
+            
+            // Scores link (plus icon)
             const scoresLink = document.querySelector('a[href="scores.html"]');
-            if (scoresLink) {
+
+            if (scoresLink && scoresModal && scoresModalContent && closeModalButton) {
                 scoresLink.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent immediate navigation
-                    const destinationUrl = this.href;
 
-                    // Outgoing animation for all cards
-                    gsap.to(allCards, {
-                        duration: 0.5,
-                        opacity: 0,
-                        y: -50, // Move cards up and out
-                        stagger: 0.1,
-                        ease: "power2.in",
-                        onComplete: () => {
-                            window.location.href = destinationUrl; // Navigate after animation
-                        }
+                    // Open modal animation
+                    // Ensure initial state for content animation if re-opening
+                    gsap.set(scoresModalContent, { y: -30, autoAlpha: 0 }); 
+
+                    gsap.to(scoresModal, { 
+                        duration: 0.4, 
+                        autoAlpha: 1, // Fades in and sets visibility: visible
+                        ease: "power2.out" 
+                    });
+                    gsap.to(scoresModalContent, { 
+                        duration: 0.4, 
+                        y: 0, // Slides down to original position
+                        autoAlpha: 1, 
+                        ease: "power2.out", 
+                        delay: 0.1 // Slight delay for content to appear after overlay
                     });
                 });
+
+                // Function to close the modal
+                function closeScoresModal() {
+                    gsap.to(scoresModalContent, { 
+                        duration: 0.3, 
+                        y: -30, // Slides up
+                        autoAlpha: 0, // Fades out and sets visibility: hidden
+                        ease: "power2.in" 
+                    });
+                    gsap.to(scoresModal, { 
+                        duration: 0.3, 
+                        autoAlpha: 0, 
+                        ease: "power2.in", 
+                        delay: 0.1 // Ensure content starts animating out first
+                    });
+                }
+
+                // Close modal with close button
+                closeModalButton.addEventListener('click', closeScoresModal);
+
+                // Close modal by clicking on the overlay
+                scoresModal.addEventListener('click', function(event) {
+                    if (event.target === scoresModal) { // Clicked on the overlay itself
+                        closeScoresModal();
+                    }
+                });
+            } else {
+                if (!scoresLink) console.error('Scores link (a[href="scores.html"]) not found.');
+                if (!scoresModal) console.error('Element with ID "scoresModal" not found.');
+                if (!scoresModalContent) console.error('Element with class "modal-content" inside scoresModal not found.');
+                if (!closeModalButton) console.error('Element with class "close-button" inside scoresModal not found.');
             }
+
         });
     </script>
 </body>
