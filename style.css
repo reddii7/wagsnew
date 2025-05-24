@@ -150,10 +150,10 @@ main {
 .scores-table {
     width: 100%; /* Makes the table take the full width of its container (.card-scores) */
     border-collapse: collapse; /* Removes default spacing between cell borders for a cleaner look */
+    /* background-color: rgb(157, 196, 201); */ /* Table background will be handled by page-specific or card styles */
     font-size: 1em; /* Base font size for table content */
     color: #e0e0e0; /* Slightly lighter text for table data for subtle contrast */
 }
-
 .scores-table th,
 .scores-table td {
     padding: 0.75em 1em; /* Adjust padding for cell spacing (top/bottom, left/right) */
@@ -240,4 +240,49 @@ body.light-theme .close-page-link:hover {
 .close-page-link .fas.fa-times {
     /* If you need to specifically style the icon, do it here,
        but 'color: inherit;' on the <a> tag usually works well. */
+}
+
+/* --- Scores Page Specific Theme (rgb(153, 177, 220)) --- */
+body.scores-page-background {
+    background-color: rgb(153, 177, 220);
+    color: #000000; /* Default text color black for this page */
+}
+
+/* Adjust card containing the table on scores page */
+body.scores-page-background .card-scores {
+    background-color: rgb(153, 177, 220); /* Match page background */
+    color: #000000; /* Black text within this card */
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */ /* Optional: add a subtle shadow if card blends too much */
+}
+
+body.scores-page-background .card-scores .card-title {
+    color: #000000; /* Black title */
+}
+
+body.scores-page-background .scores-table {
+    background-color: rgb(153, 177, 220); /* Table background matches page/card */
+    color: #000000; /* Black text for table content */
+}
+
+body.scores-page-background .scores-table th,
+body.scores-page-background .scores-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* Darker, subtle line for the new background */
+}
+
+body.scores-page-background .scores-table thead th {
+    color: #000000; /* Black header text */
+    border-bottom-color: rgba(0, 0, 0, 0.25); /* Slightly more prominent dark line for header */
+}
+
+body.scores-page-background .scores-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Adjust close link color for scores page */
+body.scores-page-background .close-page-link {
+    color: #000000; /* Black 'X' icon */
+}
+
+body.scores-page-background .close-page-link:hover {
+    color: #333333; /* Darker gray hover for 'X' */
 }
