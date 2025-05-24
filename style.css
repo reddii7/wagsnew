@@ -102,7 +102,7 @@ main {
     display: flex;
     align-items: flex-start; /* Align content to the start (top) of the flex container */
     justify-content: center;
-    padding-top: 2vh; /* Push the content down from the top. Was 10vh, try 5vh or e.g., 50px */
+    padding-top: 5vh; /* Push the content down from the top. Was 10vh, try 5vh or e.g., 50px */
 }
 
 .modal-content {

@@ -149,37 +149,45 @@
                 scoresLink.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent immediate navigation
 
-                    // Open modal animation
-                    // Ensure initial state for content animation if re-opening
-                    gsap.set(scoresModalContent, { y: -30, autoAlpha: 0 }); 
+                    document.body.classList.add('modal-open-no-scroll');
 
+                    // Open modal animation
+                    // Initial state: off-screen to the right and invisible
+                    gsap.set(scoresModalContent, { x: '100vw', autoAlpha: 0 }); 
+
+                    // Animate overlay
                     gsap.to(scoresModal, { 
-                        duration: 0.4, 
+                        duration: 0.5, // Slightly slower fade for overlay
                         autoAlpha: 1, // Fades in and sets visibility: visible
                         ease: "power2.out" 
                     });
+                    // Animate modal content sliding in from the right
                     gsap.to(scoresModalContent, { 
-                        duration: 0.4, 
-                        y: 0, // Slides down to original position
+                        duration: 0.8, // "slowly"
+                        x: 0,          // Slide to its final horizontal position
                         autoAlpha: 1, 
                         ease: "power2.out", 
-                        delay: 0.1 // Slight delay for content to appear after overlay
+                        delay: 0.1     // Content slides in after overlay starts fading
                     });
                 });
 
                 // Function to close the modal
                 function closeScoresModal() {
+                    document.body.classList.remove('modal-open-no-scroll');
+
+                    // Animate modal content sliding out to the right
                     gsap.to(scoresModalContent, { 
-                        duration: 0.3, 
-                        y: -30, // Slides up
-                        autoAlpha: 0, // Fades out and sets visibility: hidden
+                        duration: 0.7, // "slowly"
+                        x: '100vw',    // Slide off-screen to the right
+                        autoAlpha: 0,  // Fades out and sets visibility: hidden
                         ease: "power2.in" 
                     });
+                    // Animate overlay
                     gsap.to(scoresModal, { 
-                        duration: 0.3, 
+                        duration: 0.5, // Slower fade for overlay
                         autoAlpha: 0, 
                         ease: "power2.in", 
-                        delay: 0.1 // Ensure content starts animating out first
+                        delay: 0.2 // Overlay fades after content starts sliding out
                     });
                 }
 
