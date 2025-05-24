@@ -21,6 +21,8 @@
 </head>
 
 <body class="scores-page-background">
+    <div id="page-transition-overlay"></div>
+
     <a href="index.html" class="close-page-link">
         <i class="fas fa-times"></i>
     </a>
@@ -95,23 +97,56 @@
                 return;
             }
 
+            const pageTransitionOverlay = document.getElementById('page-transition-overlay');
             const pageTitle = document.querySelector('.card-title');
+            const closeButton = document.querySelector('.close-page-link');
             const tableHeader = document.querySelector('.scores-table thead tr');
             const tableRows = gsap.utils.toArray('.scores-table tbody tr');
 
             // Create a timeline for a more controlled sequence
-            const tl = gsap.timeline({ defaults: { duration: 0.6, ease: "power2.out" } });
+            const tl = gsap.timeline();
+
+            if (pageTransitionOverlay) {
+                tl.to(pageTransitionOverlay, {
+                    yPercent: 100, // Slide down off screen
+                    duration: 0.8, // Duration of the background wipe
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        // Hide the overlay after animation to prevent interference
+                        if (pageTransitionOverlay) pageTransitionOverlay.style.display = 'none';
+                    }
+                });
+            }
+
+            // Start content animations after the overlay has started moving.
+            // Adjust contentDelay to control when content starts appearing relative to the wipe.
+            const contentDelay = pageTransitionOverlay ? 0.25 : 0; 
+
+            if (closeButton) {
+                tl.from(closeButton, {
+                    opacity: 0,
+                    scale: 0.5, // Appears to pop in
+                    duration: 0.5,
+                    ease: "back.out(1.7)" // A nice bouncy ease
+                }, contentDelay); // Position parameter in timeline
+            }
 
             if (pageTitle) {
-                tl.from(pageTitle, { opacity: 0, y: 50 }, "+=0.2");
+                tl.from(pageTitle, {
+                    opacity: 0, y: 50, duration: 0.6, ease: "power2.out"
+                }, contentDelay + 0.1); // Start slightly after close button
             }
 
             if (tableHeader) {
-                tl.from(tableHeader, { opacity: 0, y: 30 }, "-=0.3");
+                tl.from(tableHeader, {
+                    opacity: 0, y: 30, duration: 0.6, ease: "power2.out"
+                }, "<0.1"); // Start 0.1s after the previous animation (title) begins
             }
 
             if (tableRows.length > 0) {
-                tl.from(tableRows, { opacity: 0, y: 20, stagger: 0.07 });
+                tl.from(tableRows, {
+                    opacity: 0, y: 20, stagger: 0.07, duration: 0.5, ease: "power2.out"
+                }, "<0.1"); // Start 0.1s after the previous animation (header) begins
             }
         });
     </script>

@@ -188,40 +188,12 @@ main {
     color: inherit;        /* Makes the link (and thus the icon inside it) 
                                inherit its color from its parent element. 
                                The icon's own specific color styles (like those 
-                               for .plus-icon-bottom-right within .card-blue-med) 
+                               for .plus-icon-bottom-right within .card-blue-med)
                                should still take precedence and apply correctly. */
 }
 
-body.light-theme .card-scores .card-title {
-    color: rgb(27, 27, 27);
-}
-
-body.light-theme .scores-table {
-    color: #333333; /* Darker text for table data in light mode */
-}
-
-body.light-theme .scores-table th,
-body.light-theme .scores-table td {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .scores-table thead th {
-    color: #2a72c7; /* Header color for light theme */
-    border-bottom-color: rgba(42, 114, 199, 0.4);
-}
-/* Add this to your style.css */
-
-.close-page-link {
-    position: fixed; /* Or absolute, depending on desired scroll behavior */
-    top: 20px;
-    right: 25px;
-    font-size: 1.8em; /* Adjust size as needed */
-    z-index: 1001; /* Ensure it's above other content, including a potentially fixed nav */
-    text-decoration: none; /* Remove underline from link */
-    color: #f4f4f4;     /* Default color for dark theme */
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
+/* --- Close Page Link ('X' icon) --- */
+/* General hover state for .close-page-link, color will be overridden by more specific rules */
 .close-page-link:hover {
     color: rgb(153, 177, 220); /* Example hover color - your theme's accent */
     transform: scale(1.1); /* Slight zoom on hover */
@@ -229,23 +201,14 @@ body.light-theme .scores-table thead th {
 
 /* If you have a light theme and want the X to adapt */
 body.light-theme .close-page-link {
-    color: #333333; /* Darker color for light theme */
-}
-
-body.light-theme .close-page-link:hover {
-    color: #2a72c7; /* Hover color for light theme */
+    /* color: #333333; */ /* This is overridden by scores-page-background specific rule if on that page */
 }
 
 /* Ensure the icon itself doesn't get overridden by link styles if it has its own */
 .close-page-link .fas.fa-times {
-    /* If you need to specifically style the icon, do it here,
-       but 'color: inherit;' on the <a> tag usually works well. */
-}
-
-/* --- Scores Page Specific Theme (rgb(153, 177, 220)) --- */
-body.scores-page-background {
-    background-color: rgb(153, 177, 220);
-    color: #000000; /* Default text color black for this page */
+    font-size: 1.8em; /* Explicitly set the icon size */
+    display: block;     /* Recommended for Font Awesome for better layout control */
+    line-height: 1;     /* Can help with vertical alignment */
 }
 
 /* Adjust card containing the table on scores page */
@@ -278,11 +241,44 @@ body.scores-page-background .scores-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Adjust close link color for scores page */
-body.scores-page-background .close-page-link {
-    color: #000000; /* Black 'X' icon */
+/* Add or ensure these styles are in your style.css */
+
+#page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-color: rgb(27, 27, 27); /* THIS SHOULD BE THE BG COLOR OF THE PREVIOUS PAGE (index.html) */
+    z-index: 10000; /* Very high to be on top of everything initially */
 }
 
-body.scores-page-background .close-page-link:hover {
-    color: #333333; /* Darker gray hover for 'X' */
+/* --- Page Specific Styles --- */
+/* Default body styles for scores page (scores-page-background) */
+body.scores-page-background {
+    background-color: rgb(153, 177, 220); /* THIS IS THE TARGET BG COLOR FOR scores.html */
+    color: #000000; /* Default text color for scores page */
+    /* ... other styles for scores-page-background ... */
 }
+
+/* Consolidated and definitive .close-page-link styles */
+.close-page-link {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 1.8em; /* This is the target size for the link and thus the icon */
+    z-index: 10001;   /* To be above page transition overlay */
+    text-decoration: none;
+    color: #f4f4f4;     /* Default color (e.g., for dark theme on index.html if used there) */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Specific color for close link on scores page */
+body.scores-page-background .close-page-link {
+    color: #000000; /* Black 'X' icon on the blueish scores page background */
+}
+body.scores-page-background .close-page-link:hover {
+    color: #333333; /* Darker gray hover for 'X' on scores page */
+    /* transform: scale(1.1); is inherited from the general .close-page-link:hover */
+}
+/* ... other styles ... */
