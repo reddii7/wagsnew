@@ -77,6 +77,45 @@
         <!-- </div> --> <!-- Closing tag if using .card-scores wrapper -->
     </main>
 
+    <script>
+        // Register the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => console.log('Service Worker registered with scope:', registration.scope))
+                .catch(function (error) {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+
+        // GSAP Animations for scores.html
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure GSAP is loaded
+            if (typeof gsap === 'undefined') {
+                console.error('GSAP not loaded! Make sure the CDN link is correct and loads before this script.');
+                return;
+            }
+
+            const pageTitle = document.querySelector('.card-title');
+            const tableHeader = document.querySelector('.scores-table thead tr');
+            const tableRows = gsap.utils.toArray('.scores-table tbody tr');
+
+            // Create a timeline for a more controlled sequence
+            const tl = gsap.timeline({ defaults: { duration: 0.6, ease: "power2.out" } });
+
+            if (pageTitle) {
+                tl.from(pageTitle, { opacity: 0, y: 50 }, "+=0.2");
+            }
+
+            if (tableHeader) {
+                tl.from(tableHeader, { opacity: 0, y: 30 }, "-=0.3");
+            }
+
+            if (tableRows.length > 0) {
+                tl.from(tableRows, { opacity: 0, y: 20, stagger: 0.07 });
+            }
+        });
+    </script>
+
 
 </body>
 
