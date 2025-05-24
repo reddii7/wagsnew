@@ -50,7 +50,7 @@ main {
     position: relative; /* Establishes a positioning context for absolute children */
 }
 
-.card-green-lg {
+.card-teal-lg {
     height: 510px;
     background-color: rgb(157, 196, 201);
     border-radius: 25px; /* For large round corners */
@@ -95,4 +95,104 @@ main {
 
 .card-gray-lg .plus-icon-bottom-right {
     color: rgb(153, 177, 220);
+}
+
+/* Add this to your style.css file */
+
+.card-scores {
+    background-color: rgb(67, 67, 67);
+    color: #f4f4f4; /* Assuming light text on this dark card, like .card-gray-lg */
+    border-radius: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    position: relative;
+
+}
+
+/* Optional: If you add a plus icon or specific text styling */
+/*
+.card-scores .text-blue {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -2.4px;
+    color: rgb(153, 177, 220);
+}
+
+.card-scores .plus-icon-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: 300;
+    color: rgb(153, 177, 220);
+}
+*/
+/* Add or modify these styles in your style.css */
+
+.card-scores {
+    /* ... your existing .card-scores styles ... */
+    /* Ensure it has padding if you want space between table and card edges */
+    padding: 20px;
+}
+
+.card-scores .card-title {
+    font-size: 1.5em; /* Or your preferred size */
+    font-weight: 600;
+    margin-bottom: 1em; /* Space between title and table */
+    color: #f4f4f4; /* Assuming light text on dark card */
+    text-align: center;
+}
+
+.scores-table {
+    width: 100%; /* Makes the table take the full width of its container (.card-scores) */
+    border-collapse: collapse; /* Removes default spacing between cell borders for a cleaner look */
+    font-size: 1em; /* Base font size for table content */
+    color: #e0e0e0; /* Slightly lighter text for table data for subtle contrast */
+}
+
+.scores-table th,
+.scores-table td {
+    padding: 0.75em 1em; /* Adjust padding for cell spacing (top/bottom, left/right) */
+    text-align: left; /* Default alignment for all cells */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Thinner appearing (semi-transparent) white line */
+}
+
+.scores-table thead th { /* Style for header cells */
+    font-weight: 600;
+    color: rgb(255, 255, 255); /* A distinct color for headers, e.g., your theme's accent blue */
+    border-bottom-width: 1px; /* Thinner line below the header row */
+    border-bottom-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white line for header */
+}
+
+/* To ensure the last row doesn't have a bottom border */
+.scores-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Your existing .text-right class for aligning score column */
+.text-right {
+    text-align: right;
+}
+
+/* --- Light Theme Overrides (if you have them) --- */
+body.light-theme .card-scores .card-title {
+    color: rgb(27, 27, 27);
+}
+
+body.light-theme .scores-table {
+    color: #333333; /* Darker text for table data in light mode */
+}
+
+body.light-theme .scores-table th,
+body.light-theme .scores-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .scores-table thead th {
+    color: #2a72c7; /* Header color for light theme */
+    border-bottom-color: rgba(42, 114, 199, 0.4);
 }

@@ -26,7 +26,9 @@
 
         <div class="card-blue-med">
             <span class="text-gray">Scores</span>
-            <i class="fas fa-plus plus-icon-bottom-right"></i>
+            <a href="scores.html" class="plus-icon-link">
+                <i class="fas fa-plus plus-icon-bottom-right"></i>
+            </a>
         </div>
 
          <div class="card-gray-lg">
@@ -34,7 +36,7 @@
             <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
 
-           <div class="card-green-lg">
+           <div class="card-teal-lg">
             <span class="text-gray">Best 14</span>
             <i class="fas fa-plus plus-icon-bottom-right"></i>
         </div>
@@ -70,7 +72,7 @@
             }
 
             // Select all card elements
-            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-green-lg, .card-coral-med');
+            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-teal-lg, .card-coral-med');
 
             if (cards.length > 0) {
                 gsap.from(cards, {
