@@ -178,7 +178,20 @@ main {
     text-align: right;
 }
 
-/* --- Light Theme Overrides (if you have them) --- */
+/* --- Light Theme Overrides (if you have them) --- *//* Add this to your style.css file */
+
+.plus-icon-link,
+.plus-icon-link:visited,
+.plus-icon-link:hover,
+.plus-icon-link:active {
+    text-decoration: none; /* Removes the underline from the link */
+    color: inherit;        /* Makes the link (and thus the icon inside it) 
+                               inherit its color from its parent element. 
+                               The icon's own specific color styles (like those 
+                               for .plus-icon-bottom-right within .card-blue-med) 
+                               should still take precedence and apply correctly. */
+}
+
 body.light-theme .card-scores .card-title {
     color: rgb(27, 27, 27);
 }
@@ -195,4 +208,36 @@ body.light-theme .scores-table td {
 body.light-theme .scores-table thead th {
     color: #2a72c7; /* Header color for light theme */
     border-bottom-color: rgba(42, 114, 199, 0.4);
+}
+/* Add this to your style.css */
+
+.close-page-link {
+    position: fixed; /* Or absolute, depending on desired scroll behavior */
+    top: 20px;
+    right: 25px;
+    font-size: 1.8em; /* Adjust size as needed */
+    z-index: 1001; /* Ensure it's above other content, including a potentially fixed nav */
+    text-decoration: none; /* Remove underline from link */
+    color: #f4f4f4;     /* Default color for dark theme */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-page-link:hover {
+    color: rgb(153, 177, 220); /* Example hover color - your theme's accent */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* If you have a light theme and want the X to adapt */
+body.light-theme .close-page-link {
+    color: #333333; /* Darker color for light theme */
+}
+
+body.light-theme .close-page-link:hover {
+    color: #2a72c7; /* Hover color for light theme */
+}
+
+/* Ensure the icon itself doesn't get overridden by link styles if it has its own */
+.close-page-link .fas.fa-times {
+    /* If you need to specifically style the icon, do it here,
+       but 'color: inherit;' on the <a> tag usually works well. */
 }
