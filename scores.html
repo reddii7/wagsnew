@@ -16,107 +16,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
     <!-- Theme color for browser UI -->
-    <meta name="theme-color" content="rgb(153, 177, 220)" />
+    <meta name="theme-color" content="#99B1DC" />
+    
 </head>
 
-<body>
+<body class="scores-page-background">
     <a href="index.html" class="close-page-link">
         <i class="fas fa-times"></i>
     </a>
-<body class="scores-page-background">
-  <!-- ... rest of your scores.html content ... -->
-</body>
-
 
     <main>
-       
-            <!-- Content for this card will go here -->
-            <h1 class="card-title">Week 07</h1> <!-- Added a title for the card -->
-            <!-- <i class="fas fa-plus plus-icon-bottom-right"></i> -->
-            <table class="scores-table">
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th class="text-right">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr> <td>CHRIS BOARDS</td><td class="text-right">25</td></tr>
-                    <tr> <td>PAUL SMITH</td><td class="text-right">20</td></tr>
-                    <tr> <td>JAMES TOUGH</td><td class="text-right">19</td></tr>
-                    <tr> <td>JEZ WILLIAMS</td><td class="text-right">18</td></tr>
-                    <tr> <td>MARC ALLSOPP</td><td class="text-right">18</td></tr>
-                    <tr> <td>MARK MOSLEY</td><td class="text-right">18</td></tr>
-                    <tr> <td>MARK READY</td><td class="text-right">18</td></tr>
-                    <tr> <td>RICHARD SHAW</td><td class="text-right">18</td></tr>
-                    <tr> <td>ANDY RAY</td><td class="text-right">17</td></tr>
-                    <tr> <td>BRIAN ELLIOT</td><td class="text-right">17</td></tr>
-                    <tr> <td>CRAIG MILLIGAN</td><td class="text-right">17</td></tr>
-                    <tr> <td>KEVIN HORTON</td><td class="text-right">17</td></tr>
-                    <tr> <td>JON BODEN</td><td class="text-right">16</td></tr>
-                    <tr> <td>RICHARD BIRD</td><td class="text-right">16</td></tr>
-                    <tr> <td>TIM ALLSOPP</td><td class="text-right">16</td></tr>
-                    <tr> <td>TOM GREEN</td><td class="text-right">16</td></tr>
-                    <tr> <td>ADAM TEALE</td><td class="text-right">15</td></tr>
-                    <tr> <td>ADE COOPER</td><td class="text-right">15</td></tr>
-                    <tr> <td>DAVE HARRISON</td><td class="text-right">15</td></tr>
-                    <tr> <td>PAUL BLADES</td><td class="text-right">15</td></tr>
-                    <tr> <td>RICHARD CRAVEN JONES</td><td class="text-right">14</td></tr>
-                    <tr> <td>STEPHEN WALLACE</td><td class="text-right">14</td></tr>
-                    <tr> <td>TONY MYNARD</td><td class="text-right">14</td></tr>
-                    <tr> <td>ADAM SIMCOX</td><td class="text-right">13</td></tr>
-                    <tr> <td>IAN IND</td><td class="text-right">13</td></tr>
-                    <tr> <td>LES LAWRENCE</td><td class="text-right">13</td></tr>
-                    <tr> <td>STUART MURDOCK</td><td class="text-right">13</td></tr>
-                    <tr> <td>JOHN GOODMAN</td><td class="text-right">12</td></tr>
-                    <tr> <td>JON MURCHINGTON</td><td class="text-right">12</td></tr>
-                    <tr> <td>STEVE ROBINSON</td><td class="text-right">12</td></tr>
-                    <tr> <td>TIM LEWIS</td><td class="text-right">12</td></tr>
-                    <tr> <td>GARY ADCOCK</td><td class="text-right">11</td></tr>
-                    <tr> <td>MARTIN STEVENSON</td><td class="text-right">11</td></tr>
-                    <tr> <td>STEVE SUCH</td><td class="text-right">11</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-
+        <!-- The h1 and table were previously inside a div, assuming they are direct children of main or within a .card-scores div -->
+        <!-- If they should be in a .card-scores div, it would look like: -->
+        <!-- <div class="card-scores"> -->
+        <h1 class="card-title">Week 07</h1>
+        <table class="scores-table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th class="text-right">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr> <td>CHRIS BOARDS</td><td class="text-right">25</td></tr>
+                <tr> <td>PAUL SMITH</td><td class="text-right">20</td></tr>
+                <tr> <td>JAMES TOUGH</td><td class="text-right">19</td></tr>
+                <tr> <td>JEZ WILLIAMS</td><td class="text-right">18</td></tr>
+                <tr> <td>MARC ALLSOPP</td><td class="text-right">18</td></tr>
+                <tr> <td>MARK MOSLEY</td><td class="text-right">18</td></tr>
+                <tr> <td>MARK READY</td><td class="text-right">18</td></tr>
+                <tr> <td>RICHARD SHAW</td><td class="text-right">18</td></tr>
+                <tr> <td>ANDY RAY</td><td class="text-right">17</td></tr>
+                <tr> <td>BRIAN ELLIOT</td><td class="text-right">17</td></tr>
+                <tr> <td>CRAIG MILLIGAN</td><td class="text-right">17</td></tr>
+                <tr> <td>KEVIN HORTON</td><td class="text-right">17</td></tr>
+                <tr> <td>JON BODEN</td><td class="text-right">16</td></tr>
+                <tr> <td>RICHARD BIRD</td><td class="text-right">16</td></tr>
+                <tr> <td>TIM ALLSOPP</td><td class="text-right">16</td></tr>
+                <tr> <td>TOM GREEN</td><td class="text-right">16</td></tr>
+                <tr> <td>ADAM TEALE</td><td class="text-right">15</td></tr>
+                <tr> <td>ADE COOPER</td><td class="text-right">15</td></tr>
+                <tr> <td>DAVE HARRISON</td><td class="text-right">15</td></tr>
+                <tr> <td>PAUL BLADES</td><td class="text-right">15</td></tr>
+                <tr> <td>RICHARD CRAVEN JONES</td><td class="text-right">14</td></tr>
+                <tr> <td>STEPHEN WALLACE</td><td class="text-right">14</td></tr>
+                <tr> <td>TONY MYNARD</td><td class="text-right">14</td></tr>
+                <tr> <td>ADAM SIMCOX</td><td class="text-right">13</td></tr>
+                <tr> <td>IAN IND</td><td class="text-right">13</td></tr>
+                <tr> <td>LES LAWRENCE</td><td class="text-right">13</td></tr>
+                <tr> <td>STUART MURDOCK</td><td class="text-right">13</td></tr>
+                <tr> <td>JOHN GOODMAN</td><td class="text-right">12</td></tr>
+                <tr> <td>JON MURCHINGTON</td><td class="text-right">12</td></tr>
+                <tr> <td>STEVE ROBINSON</td><td class="text-right">12</td></tr>
+                <tr> <td>TIM LEWIS</td><td class="text-right">12</td></tr>
+                <tr> <td>GARY ADCOCK</td><td class="text-right">11</td></tr>
+                <tr> <td>MARTIN STEVENSON</td><td class="text-right">11</td></tr>
+                <tr> <td>STEVE SUCH</td><td class="text-right">11</td></tr>
+            </tbody>
+        </table>
+        <!-- </div> --> <!-- Closing tag if using .card-scores wrapper -->
     </main>
 
-    <script>
-        // Register the service worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(registration => console.log('Service Worker registered with scope:', registration.scope))
-                .catch(function (error) {
-                    console.error('Service Worker registration failed:', error);
-                });
-        }
 
-        // GSAP Card Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Ensure GSAP is loaded
-            if (typeof gsap === 'undefined') {
-                console.error('GSAP not loaded! Make sure the CDN link is correct and loads before this script.');
-                return;
-            }
-
-            // Select all card elements
-            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-teal-lg, .card-coral-med');
-
-            if (cards.length > 0) {
-                gsap.from(cards, {
-                    duration: 0.8,      // Animation duration for each card
-                    opacity: 0,         // Start with opacity 0
-                    y: 50,              // Start 50px down
-                    stagger: 0.2,       // Delay between each card's animation
-                    ease: "power2.out", // Easing function for a smooth effect
-                    delay: 0.3          // Optional: delay before the first card starts animating
-                });
-            }
-        });
-    </script>
 </body>
 
 </html>
