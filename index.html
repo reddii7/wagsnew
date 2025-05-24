@@ -72,16 +72,37 @@
             }
 
             // Select all card elements
-            const cards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-teal-lg, .card-coral-med');
+            const allCards = gsap.utils.toArray('.card-blue-med, .card-gray-lg, .card-teal-lg, .card-coral-med');
 
-            if (cards.length > 0) {
-                gsap.from(cards, {
+            if (allCards.length > 0) {
+                gsap.from(allCards, {
                     duration: 0.8,      // Animation duration for each card
                     opacity: 0,         // Start with opacity 0
                     y: 50,              // Start 50px down
                     stagger: 0.2,       // Delay between each card's animation
                     ease: "power2.out", // Easing function for a smooth effect
                     delay: 0.3          // Optional: delay before the first card starts animating
+                });
+            }
+
+            // Transition for Scores link
+            const scoresLink = document.querySelector('a[href="scores.html"]');
+            if (scoresLink) {
+                scoresLink.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent immediate navigation
+                    const destinationUrl = this.href;
+
+                    // Outgoing animation for all cards
+                    gsap.to(allCards, {
+                        duration: 0.5,
+                        opacity: 0,
+                        y: -50, // Move cards up and out
+                        stagger: 0.1,
+                        ease: "power2.in",
+                        onComplete: () => {
+                            window.location.href = destinationUrl; // Navigate after animation
+                        }
+                    });
                 });
             }
         });
