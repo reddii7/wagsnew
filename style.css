@@ -172,3 +172,14 @@ main {
     border-bottom-width: 2px; /* Stronger border under headers */
     border-bottom-color: rgba(255, 255, 255, 0.3);
 }
+/* Prevent plus icon links from changing color or getting underlined on interaction */
+.plus-icon-link,
+.plus-icon-link:hover,
+.plus-icon-link:active,
+.plus-icon-link:visited,
+.plus-icon-link:focus {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit;        /* Ensure the link inherits its color from the parent card,
+                               preventing default browser link color changes on interaction.
+                               The icon inside will then inherit this consistent color. */
+}
