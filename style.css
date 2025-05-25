@@ -17,6 +17,21 @@ main {
     padding: 1em;
 }
 
+/* Update Message Banner */
+.update-message {
+    background-color: rgb(60, 80, 110); /* A noticeable but not overly bright dark blue */
+    color: #f0f0f0; /* Light text for contrast */
+    text-align: center;
+    padding: 10px 15px;
+    position: fixed; /* Positions the banner relative to the viewport */
+    top: 0;          /* Aligns the banner to the top of the viewport */
+    left: 0;
+    width: 100%;
+    z-index: 999;    /* Ensures it's above most content but below modals (modal z-index is 1000) */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow for depth */
+    font-size: 0.9em; /* Slightly smaller text for a banner */
+}
+
 /* Common Card Styles */
 .card-blue-med,
 .card-coral-med,
