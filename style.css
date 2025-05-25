@@ -183,3 +183,13 @@ main {
                                preventing default browser link color changes on interaction.
                                The icon inside will then inherit this consistent color. */
 }
+/* In style.css */
+.logo-large {
+  display: block; /* To enable margin auto for centering if not using text-align on parent */
+  margin-top: 60px; /* Increased space above the logo */
+  margin-bottom: 150px; /* Increased space below the logo */
+  width: 200px; /* Or your desired width */
+  max-width: 100%; /* Ensures responsiveness */
+  height: auto;   /* Maintain aspect ratio */
+  
+}
