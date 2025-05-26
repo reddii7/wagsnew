@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const wagsLogo = document.querySelector('.logo-large');
         if (wagsLogo) {
             // Set the final desired opacity for the logo
-            gsap.set(wagsLogo, { opacity: 0.5 });
+            gsap.set(wagsLogo, { opacity: 0.90 });
             gsap.from(wagsLogo, {
                 duration: 1.5, // How long the animation takes (including bounces)
                 y: -200,       // Start 100 pixels above its final position
