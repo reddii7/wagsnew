@@ -108,7 +108,7 @@ main {
     height: 100%; /* Full height */
     overflow-y: auto; /* Enable vertical scroll FOR THE MODAL OVERLAY ITSELF */
     -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
-    background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity for the overlay */
+
     
     /* Initial state for GSAP: hidden and transparent */
     opacity: 0;

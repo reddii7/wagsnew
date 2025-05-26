@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const modalContentElement = modalContentElements[modalElement.id]; // Get the corresponding content element
+        if (!modalContentElement) {
+            console.error(`No modalContentElement found for ${modalElement.id} in modalContentElements map.`);
+            return;
+        }
+
         // Diagnostic: Check if the element is even considered scrollable by the browser
         if (modalElement.scrollHeight <= modalElement.clientHeight) {
             console.warn(`Modal ${modalElement.id} is NOT initially scrollable (scrollHeight: ${modalElement.scrollHeight} <= clientHeight: ${modalElement.clientHeight}). Auto-close on max scroll might not trigger if content doesn't make it scrollable later.`);
@@ -54,29 +60,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollHeight = modalElement.scrollHeight;
             const clientHeight = modalElement.clientHeight;
             const tolerance = 5; // Tolerance for sub-pixel rendering
+            const maxScroll = scrollHeight - clientHeight - tolerance;
 
-            console.log(`Modal ID: ${modalElement.id}, ScrollTop: ${scrollTop}, ScrollHeight: ${scrollHeight}, ClientHeight: ${clientHeight}, Target: ${scrollHeight - clientHeight - tolerance}`);
-            if (scrollTop >= (scrollHeight - clientHeight - tolerance)) {
+            // console.log(`Modal ID: ${modalElement.id}, ScrollTop: ${scrollTop}, ScrollHeight: ${scrollHeight}, ClientHeight: ${clientHeight}, Target: ${maxScroll}`);
+            if (scrollTop >= maxScroll) {
                 console.log(`Modal ${modalElement.id} reached max scroll. Auto-closing.`);
-                closeCallback();
+                closeCallback(); 
             }
         };
 
         modalElement.addEventListener('scroll', handleScroll);
-        modalElement[scrollListenerKey] = handleScroll; // Store the handler reference
+        modalElement[scrollListenerKey] = handleScroll; 
         console.log(`ADD: Listener for ${modalElement.id} supposedly added. Handler function:`, handleScroll);
     }
 
     function removeAutoCloseScrollListener(modalElement) {
         if (modalElement && modalElement[scrollListenerKey]) {
             modalElement.removeEventListener('scroll', modalElement[scrollListenerKey]);
-            delete modalElement[scrollListenerKey]; // Clean up the property
+            delete modalElement[scrollListenerKey]; 
             // console.log(`Removed scroll listener from ${modalElement.id}`);
         }
     }
 
     // --- DOM Element Selections ---
-    const mainContentElement = document.querySelector('main');
+    // const mainContentElement = document.querySelector('main'); // Selected but not used for opacity animations
 
     // Scores Modal Elements
     const scoresModal = document.getElementById('scoresModal');
@@ -102,6 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalButtonLeagues = leaguesModal ? leaguesModal.querySelector('.close-button') : null;
     const leaguesLink = document.querySelector('a[href="#leagues-modal-trigger"]');
 
+    // Map modal IDs to their content elements for easier access in scroll handler
+    const modalContentElements = {
+        scoresModal: scoresModalContent,
+        handicapsModal: handicapsModalContent,
+        best14Modal: best14ModalContent,
+        leaguesModal: leaguesModalContent
+    };
 
     // --- Modal Logic ---
 
@@ -115,14 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             document.body.classList.add('modal-open-no-scroll');
 
-            // Dim main content when modal opens
-            if (mainContentElement) {
-                gsap.to(mainContentElement, {
-                    duration: 0.3, // Duration of the dimming effect
-                    opacity: 0.3, // Dim to 30% opacity (adjust as needed)
-                    ease: "power1.out"
-                });
-            }
             gsap.set(scoresModalContent, { x: '100vw', autoAlpha: 0 });
             gsap.to(scoresModal, {
                 duration: 0.3,
@@ -143,25 +149,18 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeScoresModal() {
             removeAutoCloseScrollListener(scoresModal);
             gsap.to(scoresModalContent, {
-                duration: 0.4,
+                duration: 0.4, 
                 x: '100vw',
                 autoAlpha: 0,
                 ease: "power2.in"
             });
-            gsap.to(scoresModal, {
-                duration: 0.3,
+            gsap.to(scoresModal, { 
+                duration: 0.3, 
                 autoAlpha: 0,
                 ease: "power2.in",
-                delay: 0.2,
+                delay: 0.1, 
                 onComplete: () => {
-                    document.body.classList.remove('modal-open-no-scroll'); // Remove scroll lock
-                    if (mainContentElement) {
-                        gsap.to(mainContentElement, { // Animate from current (dimmed) opacity to 1
-                            duration: 0.5, // Duration of the fade back effect
-                            opacity: 1, 
-                            ease: "power1.inOut"
-                        });
-                    }
+                    document.body.classList.remove('modal-open-no-scroll');
                 }
             });
         }
@@ -183,12 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             document.body.classList.add('modal-open-no-scroll');
 
-            // Dim main content when modal opens
-            if (mainContentElement) {
-                gsap.to(mainContentElement, {
-                    duration: 0.3, opacity: 0.3, ease: "power1.out"
-                });
-            }
             gsap.set(handicapsModalContent, { x: '100vw', autoAlpha: 0 });
             gsap.to(handicapsModal, {
                 duration: 0.3,
@@ -218,16 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.3,
                 autoAlpha: 0,
                 ease: "power2.in",
-                delay: 0.2,
+                delay: 0.1,
                 onComplete: () => {
-                    document.body.classList.remove('modal-open-no-scroll'); 
-                    if (mainContentElement) {
-                        gsap.to(mainContentElement, { // Animate from current (dimmed) opacity to 1
-                            duration: 0.5, 
-                            opacity: 1,
-                            ease: "power1.inOut"
-                        });
-                    }
+                    document.body.classList.remove('modal-open-no-scroll');
                 }
             });
         }
@@ -249,12 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             document.body.classList.add('modal-open-no-scroll');
 
-            // Dim main content when modal opens
-            if (mainContentElement) {
-                gsap.to(mainContentElement, {
-                    duration: 0.3, opacity: 0.3, ease: "power1.out"
-                });
-            }
             gsap.set(best14ModalContent, { x: '100vw', autoAlpha: 0 });
             gsap.to(best14Modal, {
                 duration: 0.3,
@@ -284,16 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.3,
                 autoAlpha: 0,
                 ease: "power2.in",
-                delay: 0.2,
+                delay: 0.1,
                 onComplete: () => {
-                    document.body.classList.remove('modal-open-no-scroll'); 
-                    if (mainContentElement) {
-                        gsap.to(mainContentElement, { // Animate from current (dimmed) opacity to 1
-                            duration: 0.5, 
-                            opacity: 1,
-                            ease: "power1.inOut"
-                        });
-                    }
+                    document.body.classList.remove('modal-open-no-scroll');
                 }
             });
         }
@@ -315,12 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             document.body.classList.add('modal-open-no-scroll');
 
-            // Dim main content when modal opens
-            if (mainContentElement) {
-                gsap.to(mainContentElement, {
-                    duration: 0.3, opacity: 0.3, ease: "power1.out"
-                });
-            }
             gsap.set(leaguesModalContent, { x: '100vw', autoAlpha: 0 });
             gsap.to(leaguesModal, {
                 duration: 0.3,
@@ -350,16 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.3,
                 autoAlpha: 0,
                 ease: "power2.in",
-                delay: 0.2,
+                delay: 0.1,
                 onComplete: () => {
-                    document.body.classList.remove('modal-open-no-scroll'); 
-                    if (mainContentElement) {
-                        gsap.to(mainContentElement, { // Animate from current (dimmed) opacity to 1
-                            duration: 0.5, 
-                            opacity: 1,
-                            ease: "power1.inOut"
-                        });
-                    }
+                    document.body.classList.remove('modal-open-no-scroll');
                 }
             });
         }
@@ -376,8 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Close active modal with Escape key ---
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            // Check which modal is active and call its close function
-            // This assumes only one modal can be active at a time.
             if (scoresModal && gsap.getProperty(scoresModal, "autoAlpha") === 1) {
                 closeScoresModal();
             } else if (handicapsModal && gsap.getProperty(handicapsModal, "autoAlpha") === 1) {
@@ -390,8 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial state for main content
-    if (mainContentElement) {
-        gsap.set(mainContentElement, { opacity: 1 }); // Ensure it's visible by default using opacity
-    }
+    // The mainContentElement is selected but no longer has its opacity/autoAlpha set by JS here.
+    // If it appears faded, that styling is coming from your CSS.
 });
