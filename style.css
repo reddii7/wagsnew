@@ -221,3 +221,39 @@ body.modal-open-no-scroll {
   height: auto;   /* Maintain aspect ratio */
   
 }
+
+/* Custom styles for modal scrolling behavior */
+.modal {
+    /* Ensure the modal overlay itself can scroll if its content is too tall */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    /* Assuming position:fixed, top:0, left:0, width:100%, height:100%
+       are already defined elsewhere in style.css for .modal for its overlay behavior. */
+}
+
+.modal-content {
+    /* Prevent internal scrolling within the modal-content div.
+       Allow it to expand to its full content height. */
+    overflow-y: visible; /* Content should not be clipped or scrolled by this element */
+    overflow-x: hidden;  /* Prevent accidental horizontal scrollbars */
+
+    /* Allow content to determine height, overriding potential fixed/max height */
+    height: auto;
+    max-height: none;
+
+    /* Make the modal content area at least as tall as the viewport.
+       If its actual content is taller, this div will expand beyond viewport height,
+       and the parent .modal (with overflow-y: auto) will provide the scrollbar. */
+    min-height: 100%; /* Ensures it's at least viewport height */
+    box-sizing: border-box; /* Important if .modal-content has padding or borders */
+
+    /* Constrain width and center horizontally, similar to body cards/main content area */
+    /* Adjust max-width below to your desired width, e.g., the width of your main content column or cards */
+    max-width: 768px; /* Example: A common content width. Change this value as needed. */
+    width: 95%;       /* Fallback for smaller screens, ensures some space from screen edges */
+    margin-left: auto;  /* Centers the modal content horizontally */
+    margin-right: auto; /* Centers the modal content horizontally */
+    /* Note: If your main style.css already defines `margin: Y auto;` for .modal-content,
+       the `auto` for left/right here is fine. The Y value for top/bottom margin
+       will still apply and create scrollable space around the min-height: 100% content area. */
+}
