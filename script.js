@@ -333,6 +333,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Error logging for missing Leagues Modal elements
     }
 
+        // GSAP WAGS Logo Animation (Drop from top with bounce)
+        const wagsLogo = document.querySelector('.logo-large');
+        if (wagsLogo) {
+            gsap.from(wagsLogo, {
+                duration: 1.5, // How long the animation takes (including bounces)
+                y: -100,       // Start 100 pixels above its final position
+                autoAlpha: 0,  // Start completely invisible
+                ease: "bounce.out", // The bounce effect
+                delay: 0.5     // Wait 0.5 seconds before starting
+            });
+        } else {
+            console.warn('WAGS logo element (.logo-large) not found. Animation skipped.');
+        }
+    
+
     // --- Close active modal with Escape key ---
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
