@@ -336,9 +336,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // GSAP WAGS Logo Animation (Drop from top with bounce)
         const wagsLogo = document.querySelector('.logo-large');
         if (wagsLogo) {
+            // Set the final desired opacity for the logo
+            gsap.set(wagsLogo, { opacity: 0.5 });
             gsap.from(wagsLogo, {
                 duration: 1.5, // How long the animation takes (including bounces)
-                y: -100,       // Start 100 pixels above its final position
+                y: -200,       // Start 100 pixels above its final position
                 autoAlpha: 0,  // Start completely invisible
                 ease: "bounce.out", // The bounce effect
                 delay: 0.5     // Wait 0.5 seconds before starting
