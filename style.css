@@ -203,6 +203,35 @@ main {
     border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Specific styles for Scores Modal */
+#scoresModal .modal-content {
+    background-color: rgb(153, 177, 220); /* Light blue background for scores modal */
+    color: #000000; /* Dark text for readability on light blue */
+}
+
+#scoresModal .modal-content h2 {
+    color: #000000; /* Dark title text */
+}
+
+#scoresModal .modal-content .scores-table th,
+#scoresModal .modal-content .scores-table td {
+    color: #000000; /* Dark text for table content */
+    border-bottom-color: rgba(0, 0, 0, 0.15); /* Darker subtle borders for rows */
+}
+
+#scoresModal .modal-content .scores-table th {
+    border-bottom-color: rgba(0, 0, 0, 0.3); /* Darker stronger border under headers */
+}
+
+#scoresModal .close-button {
+    color: #333333; /* Dark gray close button for visibility on light blue */
+}
+
+#scoresModal .close-button:hover,
+#scoresModal .close-button:focus {
+    color: #000000; /* Black on hover/focus */
+}
+
 /*
   Prevent body and html scrolling when a modal is open.
   Ensure your JavaScript adds the 'modal-open-no-scroll' class
