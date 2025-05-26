@@ -106,7 +106,7 @@ main {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: auto; /* Enable scroll if needed FOR THE MODAL ITSELF */
     background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity for the overlay */
     
     /* Initial state for GSAP: hidden and transparent */
@@ -128,6 +128,8 @@ main {
     border-radius: 25px; /* More rounded, card-like corners */
  
     width: 90%; /* Responsive width */
+    max-height: calc(100vh - 100px); /* Max height considering padding-top of .modal and some bottom space */
+    overflow-y: auto; /* Enable vertical scroll WITHIN the modal content if it overflows */
    
     position: relative; /* For positioning the close button */
     text-align: left; /* Default text alignment */
@@ -187,6 +189,17 @@ main {
     border-bottom-width: 2px; /* Stronger border under headers */
     border-bottom-color: rgba(255, 255, 255, 0.3);
 }
+
+/*
+  Prevent body and html scrolling when a modal is open.
+  Ensure your JavaScript adds the 'modal-open-no-scroll' class
+  to BOTH document.documentElement (html) and document.body.
+*/
+html.modal-open-no-scroll,
+body.modal-open-no-scroll {
+    overflow: hidden;
+}
+
 /* Prevent plus icon links from changing color or getting underlined on interaction */
 .plus-icon-link,
 .plus-icon-link:hover,
