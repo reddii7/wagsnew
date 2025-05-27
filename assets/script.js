@@ -121,31 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scores Modal
     if (scoresLink && scoresModal && scoresModalContent && closeModalButtonScores) {
-        console.log('Scores modal elements found. Attaching event listener to scoresLink.');
-        scoresLink.addEventListener('click', function(event) {
-            console.log('Scores link clicked. Preventing default navigation.');
-            event.preventDefault();
-            if (scoresModal) scoresModal.scrollTop = 0;
-            window.scrollTo(0, 0);
-            document.body.classList.add('modal-open-no-scroll');
-
-            gsap.set(scoresModalContent, { x: '100vw', autoAlpha: 0 });
-            gsap.to(scoresModal, {
-                duration: 0.3,
-                autoAlpha: 1,
-                ease: "power2.out",
-                onComplete: addAutoCloseScrollListener,
-                onCompleteParams: [scoresModal, closeScoresModal]
-            });
-            gsap.to(scoresModalContent, {
-                duration: 0.5,
-                x: 0,
-                autoAlpha: 1,
-                ease: "power2.out",
-                delay: 0.1,
-            });
-        });
-
         function closeScoresModal() {
             removeAutoCloseScrollListener(scoresModal);
             gsap.to(scoresModalContent, {
@@ -164,6 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        // If scoresLink exists, it will now navigate by default.
+        // The modal opening logic for scoresLink has been removed.
+        // We keep the close logic in case the modal is used/opened by other means.
+        console.log('Scores modal elements found. scoresLink will now navigate by default.');
+
         closeModalButtonScores.addEventListener('click', closeScoresModal);
         scoresModal.addEventListener('click', function(event) {
             if (event.target === scoresModal) {

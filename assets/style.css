@@ -67,6 +67,33 @@ main {
     color: #000000; /* Dark text on light teal background */
 }
 
+.card-dark-flex {
+    /* height: 255px; */ /* Removed fixed height to allow content to determine height */
+    border-radius: 38px; /* Increased from 25px */
+    padding: 30px;       /* Increased from 20px */
+    box-sizing: border-box;
+    margin-top: 8px;     /* Increased from 5px */
+    position: relative;
+    background-color: rgb(26, 26, 26);
+} 
+.black-pill {
+    position: absolute;
+    top: 20px; /* Aligns with parent card's padding */
+    left: 20px; /* Aligns with parent card's padding */
+    background-color: rgb(30, 30, 30); /* Dark, but not pure black */
+    color: #f0f0f0; /* Light text */
+    padding: 15px 30px; /* Increased vertical and horizontal padding */
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.75em; /* Small text */
+    font-weight: 600; /* Semi-bold */
+    line-height: 1; /* Adjust for text vertical centering if needed */
+    text-transform: uppercase; /* "WEEK 01" style */
+    z-index: 1; /* Ensures it's above the card background if there are overlapping elements */
+    letter-spacing: 0.9px; /* Slight letter spacing */
+}
+
+
+
 /* Common styles for absolutely positioned text within cards */
 .text-gray,
 .text-blue {
@@ -94,6 +121,29 @@ main {
     font-size: 2em; /* Or your preferred size, e.g., 24px */
     font-weight: 300; /* Lighter font weight for a thinner look */
 }
+
+.plus-icon-navigate {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 2em;
+   color: rgb(44, 79, 83);
+}
+
+/* Add this to your style.css */
+.card-link-wrapper {
+    display: block; /* Ensures the link takes up the block space of the card */
+    text-decoration: none; /* Removes the default underline from the link */
+    color: inherit; /* Makes the text inside inherit its color, rather than default link blue */
+}
+
+/* Optional: Add a hover effect to the card when the link wrapper is hovered */
+.card-link-wrapper:hover .card-blue-med {
+    /* Example: Add a subtle shadow or brightness change */
+    /* box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); */
+    /* filter: brightness(1.05); */
+}
+
 
 .card-gray-lg .plus-icon-bottom-right {
     color: rgb(153, 177, 220);
@@ -236,7 +286,3 @@ body.modal-open-no-scroll {
   
   
 }
-
-
-
-
