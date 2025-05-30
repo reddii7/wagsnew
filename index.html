@@ -7,9 +7,9 @@
     <title>wagsnew</title>
     <link rel="stylesheet" href="assets/style.css">    
     <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,381 +19,51 @@
 </head>
 
 <body>
-    
-
     <main>
-
-        <!-- Add logo here -->
-         <div style="text-align: left; padding-left: 20px;"> <!-- Align content to the left, indented; margin-bottom is handled by .logo-large -->
+        <div> 
+            <!-- 
+                TODO: Consider adding a class to this div, e.g., "logo-container", 
+                and move the previous inline styles (text-align: left; padding-left: 20px;) 
+                to your CSS file.
+            -->
             <img src="assets/logo.svg" alt="Wagsnew Logo" class="logo-large">
              <!-- Inline styles for size removed, now handled by CSS class -->
         </div>
 
-        
-
-        <!-- After -->
         <a href="scores.html" class="card-link-wrapper">
             <div class="card-blue-med">
                 <span class="text-gray">Scores</span>
                 <i class="fas fa-plus plus-icon-navigate"></i> <!-- Icon is no longer a nested link -->
             </div>
         </a>
-        
 
-         <div class="card-gray-lg">
+        <div class="card-gray-lg">
             <span class="text-blue">Handicaps</span>
-            <a href="#handicaps-modal-trigger" class="plus-icon-link">
+             <a href="handicaps.html" class="card-link-wrapper">
                 <i class="fas fa-plus plus-icon-bottom-right"></i>
             </a>
         </div>
 
-           <div class="card-teal-lg">
+        <div class="card-teal-lg">
             <span class="text-gray">Best 14</span>
-            <a href="#best14-modal-trigger" class="plus-icon-link">
+             <a href="best14.html" class="card-link-wrapper">
                 <i class="fas fa-plus plus-icon-bottom-right"></i>
             </a>
         </div>
 
-              <div class="card-coral-med">
+        <div class="card-coral-med">
             <span class="text-gray">Leagues</span>
-            <a href="#leagues-modal-trigger" class="plus-icon-link">
+             <a href="leagues.html" class="card-link-wrapper">
                 <i class="fas fa-plus plus-icon-bottom-right"></i>
             </a>
         </div>
-
-         <div class="card-gray-lg">
+        <div class="card-gray-lg">
             <span class="text-blue">RS Cup</span>
-            <i class="fas fa-plus plus-icon-bottom-right"></i>
+            <a href="#rscup-modal-trigger" class="plus-icon-link"> <!-- Assuming this should also be a link like other similar icons -->
+                <i class="fas fa-plus plus-icon-bottom-right"></i>
+            </a>
         </div>
-
     </main>
-
-    <!-- Scores Modal -->
-    <div id="scoresModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Week 06</h2>
-            <table class="scores-table" style="width: 100%; margin-bottom: 15px;">
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center">Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="text-center">1</td> <td>CHRIS BOARDS</td><td class="text-center original-score">25</td></tr>
-                    <tr><td class="text-center">2</td> <td>PAUL SMITH</td><td class="text-center original-score">20</td></tr>
-                    <tr><td class="text-center">3</td> <td>JAMES TOUGH</td><td class="text-center original-score">19</td></tr>
-                    <tr><td class="text-center">4</td> <td>JEZ WILLIAMS</td><td class="text-center original-score">18</td></tr>
-                    <tr><td class="text-center">4</td> <td>MARC ALLSOPP</td><td class="text-center original-score">18</td></tr>
-                    <tr><td class="text-center">4</td> <td>MARK MOSLEY</td><td class="text-center original-score">18</td></tr>
-                    <tr><td class="text-center">4</td> <td>MARK READY</td><td class="text-center original-score">18</td></tr>
-                    <tr><td class="text-center">4</td> <td>RICHARD SHAW</td><td class="text-center original-score">18</td></tr>
-                    <tr><td class="text-center">9</td> <td>ANDY RAY</td><td class="text-center original-score">17</td></tr>
-                    <tr><td class="text-center">9</td> <td>BRIAN ELLIOT</td><td class="text-center original-score">17</td></tr>
-                    <tr><td class="text-center">9</td> <td>CRAIG MILLIGAN</td><td class="text-center original-score">17</td></tr>
-                    <tr><td class="text-center">9</td> <td>KEVIN HORTON</td><td class="text-center original-score">17</td></tr>
-                    <tr><td class="text-center">13</td> <td>JON BODEN</td><td class="text-center original-score">16</td></tr>
-                    <tr><td class="text-center">13</td> <td>RICHARD BIRD</td><td class="text-center original-score">16</td></tr>
-                    <tr><td class="text-center">13</td> <td>TIM ALLSOPP</td><td class="text-center original-score">16</td></tr>
-                    <tr><td class="text-center">13</td> <td>TOM GREEN</td><td class="text-center original-score">16</td></tr>
-                    <tr><td class="text-center">17</td> <td>ADAM TEALE</td><td class="text-center original-score">15</td></tr>
-                    <tr><td class="text-center">17</td> <td>ADE COOPER</td><td class="text-center original-score">15</td></tr>
-                    <tr><td class="text-center">17</td> <td>DAVE HARRISON</td><td class="text-center original-score">15</td></tr>
-                    <tr><td class="text-center">17</td> <td>PAUL BLADES</td><td class="text-center original-score">15</td></tr>
-                    <tr><td class="text-center">21</td> <td>RICHARD CRAVEN JONES</td><td class="text-center original-score">14</td></tr>
-                    <tr><td class="text-center">21</td> <td>STEPHEN WALLACE</td><td class="text-center original-score">14</td></tr>
-                    <tr><td class="text-center">21</td> <td>TONY MYNARD</td><td class="text-center original-score">14</td></tr>
-                    <tr><td class="text-center">24</td> <td>ADAM SIMCOX</td><td class="text-center original-score">13</td></tr>
-                    <tr><td class="text-center">24</td> <td>IAN IND</td><td class="text-center original-score">13</td></tr>
-                    <tr><td class="text-center">24</td> <td>LES LAWRENCE</td><td class="text-center original-score">13</td></tr>
-                    <tr><td class="text-center">24</td> <td>STUART MURDOCK</td><td class="text-center original-score">13</td></tr>
-                    <tr><td class="text-center">28</td> <td>JOHN GOODMAN</td><td class="text-center original-score">12</td></tr>
-                    <tr><td class="text-center">28</td> <td>JON MURCHINGTON</td><td class="text-center original-score">12</td></tr>
-                    <tr><td class="text-center">28</td> <td>STEVE ROBINSON</td><td class="text-center original-score">12</td></tr>
-                    <tr><td class="text-center">28</td> <td>TIM LEWIS</td><td class="text-center original-score">12</td></tr>
-                    <tr><td class="text-center">32</td> <td>GARY ADCOCK</td><td class="text-center original-score">11</td></tr>
-                    <tr><td class="text-center">32</td> <td>MARTIN STEVENSON</td><td class="text-center original-score">11</td></tr>
-                    <tr><td class="text-center">32</td> <td>STEVE SUCH</td><td class="text-center original-score">11</td></tr>
-                </tbody>
-            </table>
-        
-        </div>
-    </div>
-
-    <!-- Handicaps Modal (Copy of Scores Modal with modifications) -->
-    <div id="handicapsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Handicaps </h2>
-            <table class="scores-table" style="width: 100%; margin-bottom: 15px;">
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th class="text-center"> H'cap</th>
-                    </tr>
-                </thead>
-                <tbody>
-         <tr> <td>ADAM SIMCOX</td><td class="text-center">3.3</td></tr>
- <tr> <td>ADAM TEALE</td><td class="text-center">6.6</td></tr>
- <tr> <td>ADE COOPER</td><td class="text-center">7.3</td></tr>
- <tr> <td>ANDREW KING</td><td class="text-center">3.3</td></tr>
- <tr> <td>ANDY RAY</td><td class="text-center">4</td></tr>
- <tr> <td>ANDY SPENCER</td><td class="text-center">0.9</td></tr>
- <tr> <td>BRIAN ELLIOT</td><td class="text-center">13</td></tr>
- <tr> <td>CHRIS BOARDS</td><td class="text-center">6.7</td></tr>
- <tr> <td>CRAIG MILLIGAN</td><td class="text-center">6.4</td></tr>
- <tr> <td>DAVE HARRISON</td><td class="text-center">3.9</td></tr>
- <tr> <td>GARY ADCOCK</td><td class="text-center">11.5</td></tr>
- <tr> <td>IAN IND</td><td class="text-center">5.3</td></tr>
- <tr> <td>JAMES HARRISON</td><td class="text-center">8.9</td></tr>
- <tr> <td>JAMES TOUGH</td><td class="text-center">3.7</td></tr>
- <tr> <td>JAMES WILLIS</td><td class="text-center">7.1</td></tr>
- <tr> <td>JEZ WILLIAMS</td><td class="text-center">3.9</td></tr>
- <tr> <td>JOHN GOODMAN</td><td class="text-center">2.4</td></tr>
- <tr> <td>JON BODEN</td><td class="text-center">5.2</td></tr>
- <tr> <td>JON MURCHINGTON</td><td class="text-center">11.2</td></tr>
- <tr> <td>JON PRICE</td><td class="text-center">6</td></tr>
- <tr> <td>KEVIN HORTON</td><td class="text-center">8.6</td></tr>
- <tr> <td>LEE EASTOE</td><td class="text-center">3.6</td></tr>
- <tr> <td>LES LAWRENCE</td><td class="text-center">4.8</td></tr>
- <tr> <td>MARC ALLSOPP</td><td class="text-center">5.8</td></tr>
- <tr> <td>MARK HOWELL</td><td class="text-center">4</td></tr>
- <tr> <td>MARK JACKSON</td><td class="text-center">4.1</td></tr>
- <tr> <td>MARK JEFFRIES</td><td class="text-center">3.4</td></tr>
- <tr> <td>MARK MOSLEY</td><td class="text-center">8</td></tr>
- <tr> <td>MARK READY</td><td class="text-center">8.7</td></tr>
- <tr> <td>MARTIN STEVENSON</td><td class="text-center">6</td></tr>
- <tr> <td>MATT O'BEIRNE</td><td class="text-center">7.3</td></tr>
- <tr> <td>MATT SPENCER</td><td class="text-center">2.7</td></tr>
- <tr> <td>MICK HENNESSY</td><td class="text-center">3.8</td></tr>
- <tr> <td>MICK SANDOZ</td><td class="text-center">2.1</td></tr>
- <tr> <td>NEALE ASTON</td><td class="text-center">8.5</td></tr>
- <tr> <td>NICK STABLEFORD</td><td class="text-center">3.8</td></tr>
- <tr> <td>PAUL BLADES</td><td class="text-center">3.8</td></tr>
- <tr> <td>PAUL CHAPMAN</td><td class="text-center">11.6</td></tr>
- <tr> <td>PAUL GARRATT</td><td class="text-center">2.3</td></tr>
- <tr> <td>PAUL SMITH</td><td class="text-center">7.3</td></tr>
- <tr> <td>PETER JEFFRIES</td><td class="text-center">10.6</td></tr>
- <tr> <td>RICHARD BIRD</td><td class="text-center">5.9</td></tr>
- <tr> <td>RICHARD COOK</td><td class="text-center">8.3</td></tr>
- <tr> <td>RICHARD CRAVEN JONES</td><td class="text-center">13</td></tr>
- <tr> <td>RICHARD SHAW</td><td class="text-center">4.1</td></tr>
- <tr> <td>ROSS JEFFRIES</td><td class="text-center">1.8</td></tr>
- <tr> <td>ROSS KELLY</td><td class="text-center">4.6</td></tr>
- <tr> <td>SCOTT WORRALL</td><td class="text-center">8.6</td></tr>
- <tr> <td>SIMON CARTER</td><td class="text-center">-0.5</td></tr>
- <tr> <td>STEPHEN WALLACE</td><td class="text-center">4.5</td></tr>
- <tr> <td>STEVE ROBINSON</td><td class="text-center">9.8</td></tr>
- <tr> <td>STEVE ROCHESTER</td><td class="text-center">7.6</td></tr>
- <tr> <td>STEVE SUCH</td><td class="text-center">6.8</td></tr>
- <tr> <td>STEVE TARMEY</td><td class="text-center">3.8</td></tr>
- <tr> <td>STUART MURDOCK</td><td class="text-center">4.8</td></tr>
- <tr> <td>TIM ALLSOPP</td><td class="text-center">3.1</td></tr>
- <tr> <td>TIM LEWIS</td><td class="text-center">7.7</td></tr>
- <tr> <td>TOM GREEN</td><td class="text-center">8.7</td></tr>
- <tr> <td>TONY MYNARD</td><td class="text-center">5.2</td></tr>
- <tr> <td>WARREN CROOK</td><td class="text-center">6.3</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Best 14 Modal -->
-    <div id="best14Modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Best 14 </h2>
-            <table class="scores-table" style="width: 100%; margin-bottom: 15px;">
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center"> Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <tr><td class="text-center">1</td> <td>IAN IND</td><td class="text-center">125</td></tr>
-                   <tr><td class="text-center">2</td> <td>JON MURCHINGTON</td><td class="text-center">123</td></tr>
-                   <tr><td class="text-center">3</td> <td>RICHARD BIRD</td><td class="text-center">112</td></tr>
-                   <tr><td class="text-center">4</td> <td>STEVE SUCH</td><td class="text-center">111</td></tr>
-                   <tr><td class="text-center">5</td> <td>SIMON CARTER</td><td class="text-center">109</td></tr>
-                   <tr><td class="text-center">6</td> <td>MARK MOSLEY</td><td class="text-center">108</td></tr>
-                   <tr><td class="text-center">6</td> <td>TIM ALLSOPP</td><td class="text-center">108</td></tr>
-                   <tr><td class="text-center">6</td> <td>TIM LEWIS</td><td class="text-center">108</td></tr>
-                   <tr><td class="text-center">9</td> <td>JON BODEN</td><td class="text-center">106</td></tr>
-                   <tr><td class="text-center">10</td> <td>JOHN GOODMAN</td><td class="text-center">105</td></tr>
-                   <tr><td class="text-center">11</td> <td>CHRIS BOARDS</td><td class="text-center">102</td></tr>
-                   <tr><td class="text-center">12</td> <td>JAMES TOUGH</td><td class="text-center">99</td></tr>
-                   <tr><td class="text-center">13</td> <td>GARY ADCOCK</td><td class="text-center">98</td></tr>
-                   <tr><td class="text-center">13</td> <td>JEZ WILLIAMS</td><td class="text-center">98</td></tr>
-                   <tr><td class="text-center">15</td> <td>TONY MYNARD</td><td class="text-center">97</td></tr>
-                   <tr><td class="text-center">16</td> <td>NICK STABLEFORD</td><td class="text-center">96</td></tr>
-                   <tr><td class="text-center">17</td> <td>MARK READY</td><td class="text-center">94</td></tr>
-                   <tr><td class="text-center">18</td> <td>KEVIN HORTON</td><td class="text-center">92</td></tr>
-                   <tr><td class="text-center">19</td> <td>ADE COOPER</td><td class="text-center">91</td></tr>
-                   <tr><td class="text-center">20</td> <td>STEPHEN WALLACE</td><td class="text-center">90</td></tr>
-                   <tr><td class="text-center">21</td> <td>TOM GREEN</td><td class="text-center">89</td></tr>
-                   <tr><td class="text-center">22</td> <td>MARK JACKSON</td><td class="text-center">86</td></tr>
-                   <tr><td class="text-center">23</td> <td>STUART MURDOCK</td><td class="text-center">84</td></tr>
-                   <tr><td class="text-center">24</td> <td>DAVE HARRISON</td><td class="text-center">80</td></tr>
-                   <tr><td class="text-center">25</td> <td>ANDY RAY</td><td class="text-center">78</td></tr>
-                   <tr><td class="text-center">25</td> <td>CRAIG MILLIGAN</td><td class="text-center">78</td></tr>
-                   <tr><td class="text-center">25</td> <td>MARC ALLSOPP</td><td class="text-center">78</td></tr>
-                   <tr><td class="text-center">28</td> <td>LES LAWRENCE</td><td class="text-center">76</td></tr>
-                   <tr><td class="text-center">29</td> <td>PAUL SMITH</td><td class="text-center">74</td></tr>
-                   <tr><td class="text-center">30</td> <td>ADAM TEALE</td><td class="text-center">73</td></tr>
-                   <tr><td class="text-center">31</td> <td>ADAM SIMCOX</td><td class="text-center">72</td></tr>
-                   <tr><td class="text-center">32</td> <td>RICHARD CRAVEN JONES</td><td class="text-center">71</td></tr>
-                   <tr><td class="text-center">33</td> <td>STEVE ROBINSON</td><td class="text-center">69</td></tr>
-                   <tr><td class="text-center">34</td> <td>STEVE TARMEY</td><td class="text-center">67</td></tr>
-                   <tr><td class="text-center">35</td> <td>PETER JEFFRIES</td><td class="text-center">65</td></tr>
-                   <tr><td class="text-center">36</td> <td>LEE EASTOE</td><td class="text-center">61</td></tr>
-                   <tr><td class="text-center">37</td> <td>MARK JEFFRIES</td><td class="text-center">53</td></tr>
-                   <tr><td class="text-center">38</td> <td>MARK HOWELL</td><td class="text-center">51</td></tr>
-                   <tr><td class="text-center">39</td> <td>MICK SANDOZ</td><td class="text-center">47</td></tr>
-                   <tr><td class="text-center">40</td> <td>ROSS JEFFRIES</td><td class="text-center">45</td></tr>
-                   <tr><td class="text-center">41</td> <td>MARTIN STEVENSON</td><td class="text-center">44</td></tr>
-                   <tr><td class="text-center">42</td> <td>PAUL CHAPMAN</td><td class="text-center">42</td></tr>
-                   <tr><td class="text-center">43</td> <td>ROSS KELLY</td><td class="text-center">35</td></tr>
-                   <tr><td class="text-center">43</td> <td>STEVE ROCHESTER</td><td class="text-center">35</td></tr>
-                   <tr><td class="text-center">45</td> <td>PAUL BLADES</td><td class="text-center">34</td></tr>
-                   <tr><td class="text-center">46</td> <td>WARREN CROOK</td><td class="text-center">33</td></tr>
-                   <tr><td class="text-center">47</td> <td>MATT SPENCER</td><td class="text-center">28</td></tr>
-                   <tr><td class="text-center">48</td> <td>ANDY SPENCER</td><td class="text-center">22</td></tr>
-                   <tr><td class="text-center">49</td> <td>PAUL GARRATT</td><td class="text-center">19</td></tr>
-                   <tr><td class="text-center">50</td> <td>RICHARD SHAW</td><td class="text-center">18</td></tr>
-                   <tr><td class="text-center">51</td> <td>BRIAN ELLIOT</td><td class="text-center">17</td></tr>
-                   <tr><td class="text-center">51</td> <td>JAMES WILLIS</td><td class="text-center">17</td></tr>
-                   <tr><td class="text-center">53</td> <td>RICHARD COOK</td><td class="text-center">15</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Leagues Modal -->
-    <div id="leaguesModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Leagues</h2>
-
-            <h3>DIVISION 1</h3>
-            <table class="scores-table" style="width: 100%; margin-bottom: 20px;">
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center">Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="text-center">1</td> <td>RICHARD BIRD</td><td class="text-center">112</td></tr>
-                    <tr><td class="text-center">2</td> <td>STEVE SUCH</td><td class="text-center">111</td></tr>
-                    <tr><td class="text-center">3</td> <td>SIMON CARTER</td><td class="text-center">109</td></tr>
-                    <tr><td class="text-center">4</td> <td>TIM ALLSOPP</td><td class="text-center">108</td></tr>
-                    <tr><td class="text-center">4</td> <td>TIM LEWIS</td><td class="text-center">108</td></tr>
-                    <tr><td class="text-center">6</td> <td>JON BODEN</td><td class="text-center">106</td></tr>
-                    <tr><td class="text-center">7</td> <td>JAMES TOUGH</td><td class="text-center">99</td></tr>
-                    <tr><td class="text-center">8</td> <td>JEZ WILLIAMS</td><td class="text-center">98</td></tr>
-                    <tr><td class="text-center">9</td> <td>TONY MYNARD</td><td class="text-center">97</td></tr>
-                    <tr><td class="text-center">10</td> <td>NICK STABLEFORD</td><td class="text-center">96</td></tr>
-                    <tr><td class="text-center">11</td> <td>DAVE HARRISON</td><td class="text-center">80</td></tr>
-                    <tr><td class="text-center">12</td> <td>ANDY RAY</td><td class="text-center">78</td></tr>
-                    <tr><td class="text-center">12</td> <td>MARC ALLSOPP</td><td class="text-center">78</td></tr>
-                    <tr><td class="text-center">14</td> <td>MARK HOWELL</td><td class="text-center">51</td></tr>
-                    <tr><td class="text-center">15</td> <td>MATT O'BEIRNE</td><td class="text-center">0</td></tr>
-                </tbody>
-            </table>
-
-            <h3>DIVISION 2</h3>
-            <table class="scores-table" style="width: 100%; margin-bottom: 20px;">
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center">Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="text-center">1</td> <td>IAN IND</td><td class="text-center">125</td></tr>
-                    <tr><td class="text-center">2</td> <td>JOHN GOODMAN</td><td class="text-center">105</td></tr>
-                    <tr><td class="text-center">3</td> <td>GARY ADCOCK</td><td class="text-center">98</td></tr>
-                    <tr><td class="text-center">4</td> <td>MARK READY</td><td class="text-center">94</td></tr>
-                    <tr><td class="text-center">5</td> <td>KEVIN HORTON</td><td class="text-center">92</td></tr>
-                    <tr><td class="text-center">6</td> <td>TOM GREEN</td><td class="text-center">89</td></tr>
-                    <tr><td class="text-center">7</td> <td>PAUL SMITH</td><td class="text-center">74</td></tr>
-                    <tr><td class="text-center">8</td> <td>ADAM TEALE</td><td class="text-center">73</td></tr>
-                    <tr><td class="text-center">9</td> <td>STEVE ROBINSON</td><td class="text-center">69</td></tr>
-                    <tr><td class="text-center">10</td> <td>LEE EASTOE</td><td class="text-center">61</td></tr>
-                    <tr><td class="text-center">11</td> <td>MARK JEFFRIES</td><td class="text-center">53</td></tr>
-                    <tr><td class="text-center">12</td> <td>MICK SANDOZ</td><td class="text-center">47</td></tr>
-                    <tr><td class="text-center">13</td> <td>ROSS JEFFRIES</td><td class="text-center">45</td></tr>
-                    <tr><td class="text-center">14</td> <td>PAUL BLADES</td><td class="text-center">34</td></tr>
-                    <tr><td class="text-center">15</td> <td>RICHARD SHAW</td><td class="text-center">18</td></tr>
-                </tbody>
-            </table>
-
-            <h3>DIVISION 3</h3>
-            <table class="scores-table" style="width: 100%; margin-bottom: 20px;">
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center">Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="text-center">1</td> <td>JON MURCHINGTON</td><td class="text-center">123</td></tr>
-                    <tr><td class="text-center">2</td> <td>CHRIS BOARDS</td><td class="text-center">102</td></tr>
-                    <tr><td class="text-center">3</td> <td>ADE COOPER</td><td class="text-center">91</td></tr>
-                    <tr><td class="text-center">4</td> <td>STEPHEN WALLACE</td><td class="text-center">90</td></tr>
-                    <tr><td class="text-center">5</td> <td>LES LAWRENCE</td><td class="text-center">76</td></tr>
-                    <tr><td class="text-center">6</td> <td>RICHARD CRAVEN JONES</td><td class="text-center">71</td></tr>
-                    <tr><td class="text-center">7</td> <td>PETER JEFFRIES</td><td class="text-center">65</td></tr>
-                    <tr><td class="text-center">8</td> <td>MARTIN STEVENSON</td><td class="text-center">44</td></tr>
-                    <tr><td class="text-center">9</td> <td>PAUL CHAPMAN</td><td class="text-center">42</td></tr>
-                    <tr><td class="text-center">10</td> <td>STEVE ROCHESTER</td><td class="text-center">35</td></tr>
-                    <tr><td class="text-center">11</td> <td>BRIAN ELLIOT</td><td class="text-center">17</td></tr>
-                    <tr><td class="text-center">12</td> <td>JON PRICE</td><td class="text-center">0</td></tr>
-                    <tr><td class="text-center">12</td> <td>JAMES HARRISON</td><td class="text-center">0</td></tr>
-                    <tr><td class="text-center">12</td> <td>MICK HENNESSY</td><td class="text-center">0</td></tr>
-                    <tr><td class="text-center">12</td> <td>ANDREW KING</td><td class="text-center">0</td></tr>
-                </tbody>
-            </table>
-
-            <h3>DIVISION 4</h3>
-            <table class="scores-table" style="width: 100%; margin-bottom: 15px;"> <!-- Last table, standard margin -->
-                <thead>
-                    <tr>
-                        <th class="text-center">Pos</th>
-                        <th>Player</th>
-                        <th class="text-center">Pts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="text-center">1</td> <td>MARK MOSLEY</td><td class="text-center">108</td></tr>
-                    <tr><td class="text-center">2</td> <td>MARK JACKSON</td><td class="text-center">86</td></tr>
-                    <tr><td class="text-center">3</td> <td>STUART MURDOCK</td><td class="text-center">84</td></tr>
-                    <tr><td class="text-center">4</td> <td>CRAIG MILLIGAN</td><td class="text-center">78</td></tr>
-                    <tr><td class="text-center">5</td> <td>ADAM SIMCOX</td><td class="text-center">72</td></tr>
-                    <tr><td class="text-center">6</td> <td>STEVE TARMEY</td><td class="text-center">67</td></tr>
-                    <tr><td class="text-center">7</td> <td>ROSS KELLY</td><td class="text-center">35</td></tr>
-                    <tr><td class="text-center">8</td> <td>WARREN CROOK</td><td class="text-center">33</td></tr>
-                    <tr><td class="text-center">9</td> <td>MATT SPENCER</td><td class="text-center">28</td></tr>
-                    <tr><td class="text-center">10</td> <td>ANDY SPENCER</td><td class="text-center">22</td></tr>
-                    <tr><td class="text-center">11</td> <td>PAUL GARRATT</td><td class="text-center">19</td></tr>
-                    <tr><td class="text-center">12</td> <td>JAMES WILLIS</td><td class="text-center">17</td></tr>
-                    <tr><td class="text-center">13</td> <td>RICHARD COOK</td><td class="text-center">15</td></tr>
-                    <tr><td class="text-center">14</td> <td>NEALE ASTON</td><td class="text-center">10</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-  <script src="assets/script.js" defer></script>
-  
+    <script src="assets/script.js" defer></script>
 </body>
-
 </html>

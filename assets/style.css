@@ -6,31 +6,13 @@ body {
     color: #f4f4f4; /* Changed to a light color for contrast with dark background */
 }
 
-header {
-    background-color: #317EFB;
-    color: white;
-    padding: 1em 0;
-    text-align: center;
-}
+
 
 main {
     padding: 1em;
 }
 
-/* Update Message Banner */
-.update-message {
-    background-color: rgb(60, 80, 110); /* A noticeable but not overly bright dark blue */
-    color: #f0f0f0; /* Light text for contrast */
-    text-align: center;
-    padding: 10px 15px;
-    position: fixed; /* Positions the banner relative to the viewport */
-    top: 0;          /* Aligns the banner to the top of the viewport */
-    left: 0;
-    width: 100%;
-    z-index: 999;    /* Ensures it's above most content but below modals (modal z-index is 1000) */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow for depth */
-    font-size: 0.9em; /* Slightly smaller text for a banner */
-}
+
 
 /* Common Card Styles */
 .card-blue-med,
@@ -76,21 +58,7 @@ main {
     position: relative;
     background-color: rgb(26, 26, 26);
 } 
-.black-pill {
-    position: absolute;
-    top: 20px; /* Aligns with parent card's padding */
-    left: 20px; /* Aligns with parent card's padding */
-    background-color: rgb(30, 30, 30); /* Dark, but not pure black */
-    color: #f0f0f0; /* Light text */
-    padding: 15px 30px; /* Increased vertical and horizontal padding */
-    border-radius: 20px; /* Pill shape */
-    font-size: 0.75em; /* Small text */
-    font-weight: 600; /* Semi-bold */
-    line-height: 1; /* Adjust for text vertical centering if needed */
-    text-transform: uppercase; /* "WEEK 01" style */
-    z-index: 1; /* Ensures it's above the card background if there are overlapping elements */
-    letter-spacing: 0.9px; /* Slight letter spacing */
-}
+
 
 
 
@@ -137,132 +105,8 @@ main {
     color: inherit; /* Makes the text inside inherit its color, rather than default link blue */
 }
 
-/* Optional: Add a hover effect to the card when the link wrapper is hovered */
-.card-link-wrapper:hover .card-blue-med {
-    /* Example: Add a subtle shadow or brightness change */
-    /* box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); */
-    /* filter: brightness(1.05); */
-}
 
 
-.card-gray-lg .plus-icon-bottom-right {
-    color: rgb(153, 177, 220);
-}
-/* Modal Styles */
-.modal {
-    /* display: none; /* GSAP's autoAlpha will handle visibility, so display:none is not strictly needed if opacity and visibility are set */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow-y: auto; /* Enable vertical scroll FOR THE MODAL OVERLAY ITSELF */
-    -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
-
-    
-    /* Initial state for GSAP: hidden and transparent */
-    opacity: 0;
-    visibility: hidden;
-
-    box-sizing: border-box; /* Ensure padding doesn't add to 100% height/width */
-
-    /* Flexbox for centering modal content easily */
-    display: flex;
-    align-items: flex-start; /* Align content to the start (top) of the flex container */
-    justify-content: center;
-    /* padding-top is removed/commented out so modal-content starts at the viewport top */
-    /* padding-top: 50px; Removed to allow modal content to start at the very top of the viewport */
-
-    /* Add padding-bottom to allow scrolling beyond the natural end of the modal-content */
-    padding-bottom: 100vh; /* Example: allows scrolling an additional 50% of viewport height */
-}
-
-.modal-content {
-    background-color: rgb(27, 27, 27); /* Primary blue, similar to a blue card */
-    color: #f8f9fa; /* Light text color for contrast on blue background */
-    margin: 0; /* Centering and top/bottom spacing handled by .modal's flex properties and padding */
-    padding: 20px;
-    border-radius: 25px; /* More rounded, card-like corners */
- 
-    width: 95%; /* Responsive width */
-    max-width: 768px; /* Constrain width, similar to other content cards */
-
-    /* Scrolling behavior: allow content to determine height and prevent internal scrollbars */
-    height: auto; /* Content determines height */
-    max-height: none; /* No restriction on maximum height */
-   
-    overflow-y: visible; /* Content should overflow this element, scroll handled by .modal */
-    overflow-x: hidden;  /* Prevent accidental horizontal scrollbars */
-    box-sizing: border-box; /* Padding and border are included in width/height */
-   
-    position: relative; /* For positioning the close button */
-    text-align: left; /* Default text alignment */
-    border: 0px solid rgba(255, 255, 255, 0.2); /* Optional: subtle border */
-    /* Initial state for GSAP animation: hidden, transparent */
-    opacity: 0;
-    visibility: hidden;
-    /* transform: translateY(-30px); Removed: GSAP should handle animation transforms. This caused a persistent offset. */
-}
-
-.close-button {
-    color: #e0e0e0; /* Light gray for visibility on blue */
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1; /* Ensure consistent vertical alignment */
-    transition: color 0.2s ease-in-out;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: #ffffff; /* White on hover/focus */
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Optional: Basic styling for content inside the modal */
-.modal-content h2 {
-    margin-top: 0;
-    color: #ffffff; /* White title text */
-    font-family: 'Inter', sans-serif;
-    margin-bottom: 20px; /* More space below title */
-}
-
-.modal-content p {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-/* Ensure table text is also light */
-.modal-content .scores-table th,
-.modal-content .scores-table td {
-    color: #f0f0f0; /* Light text for table content */
-    padding-top: 10px; /* Add top padding */
-    padding-bottom: 10px; /* Add bottom padding */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Subtle light borders for rows */
-}
-
-/* Style for table headers specifically */
-.modal-content .scores-table th {
-    font-weight: 600;
-    color: #ffffff; /* White for headers */
-    border-bottom-width: 2px; /* Stronger border under headers */
-    border-bottom-color: rgba(255, 255, 255, 0.3);
-}
-
-/*
-  Prevent body and html scrolling when a modal is open.
-  Ensure your JavaScript adds the 'modal-open-no-scroll' class
-  to BOTH document.documentElement (html) and document.body.
-*/
-html.modal-open-no-scroll,
-body.modal-open-no-scroll {
-    overflow: hidden;
-}
 
 /* Prevent plus icon links from changing color or getting underlined on interaction */
 .plus-icon-link,

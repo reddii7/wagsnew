@@ -1,66 +1,967 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WAGS</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wagsnew</title>
-    <link rel="stylesheet" href="assets/style.css">    
-    <!-- GSAP Library -->
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Webmanifest + Favicon / App icons -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="app-icons/icon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="app-icons/icon-180x180.png">
+
+    <!-- Theme switcher (color modes) -->
+    <script src="js/theme-switcher.js"></script>
+
+    <!-- Google Fonts: Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="assets/manifest.json">
-    <!-- Theme color for browser UI -->
-    <meta name="theme-color" content="rgb(13, 13, 13)" />
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<body style="background-color: rgb(13, 13, 13);">
-    
+    <!-- Font icons -->
+    <link rel="stylesheet" href="icons/around-icons.min.css">
 
-    <main>
-        <div class="card-dark-flex">
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 08</div>
-                <i class="fas fa-plus plus-icon-bottom-right"></i>
-            </div>
+    <!-- Theme styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 07</div>
-            </div>
+    <link rel="stylesheet" media="screen" href="css/page.css">
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 06</div>
-            </div>
+     <!-- Page loading scripts -->
+     <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1500);
+        };
+      })();
+    </script>
+  </head>
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 05</div>
-            </div>
+  <body>
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+      </div>
+    </div>
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 04</div>
-            </div>
+    <!-- Combined Title and Back Button Navigation -->
+    <nav class="leagues-title-nav fixed-top bg-light">
+      <div class="container d-flex align-items-center justify-content-between py-3">
+        <a href="index.html" class="btn btn-icon btn-sm btn-outline-secondary border-0 rounded-circle" aria-label="Back">
+          <i class="ai-arrow-left"></i>
+        </a>
+        <h5 class="mb-0 fs-5 fw-bold text-dark text-nowrap overflow-hidden text-truncate">SCORES</h5>
+        <a href="#" class="btn btn-icon btn-sm border-0 text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#scorePageRulesModal" aria-label="Score Page Rules">
+          <i class="ai-file-text fs-4 league-rules-icon"></i>
+        </a>
+      </div>
+    </nav>
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 03</div>
-            </div>
+    <main class="page-wrapper">
 
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 02</div>
-            </div>
-
-            <div class="card-gray-lg">
-                <div class="black-pill">WEEK 01</div>
-            </div>
+      <!-- Data Entries List Section -->
+      <section class="container pt-5 pb-4">
+      
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-12">
+            <ul class="list-unstyled" id="scoresAccordion">
+              <!-- Week 09 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center"> <!-- Left part: 09 MARK READY -->
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 09</a>
+                    <span class="ms-3 text-body fw-medium">Lee Eastoe</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center"> <!-- Right part: 24 and arrow -->
+                    <small class="text-muted">24 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week09ScoreDetails" aria-expanded="false" aria-controls="week09ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <!-- Collapsible content for Week 09 Details -->
+                <div class="collapse pt-2" id="week09ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Lee Eastoe</strong> (24 points)</p>
+                    <p class="mb-1">Prize Money: £58.50</p>
+                    <p class="mb-1">No. of Players: 39</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Lee down to 3<br>Chris down to 5<br>Robbo down to 9<br>Craig down to 6<br>John Goodman down to 2<br>Mark Jeffries up to 4.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week09ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 09">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 08 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 08</a>
+                    <span class="ms-3 text-body fw-medium">Ade Cooper</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">24 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week08ScoreDetails" aria-expanded="false" aria-controls="week08ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week08ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Ade Cooper</strong> (24 points)</p>
+                    <p class="mb-1">Prize Money: £43.50</p>
+                    <p class="mb-1">No. of Players: 29</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Pete down to 10.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week08ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 08">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 07 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 07</a>
+                    <span class="ms-3 text-body fw-medium">Chris Boards</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">25 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week07ScoreDetails" aria-expanded="false" aria-controls="week07ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week07ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Chris Boards</strong> (25 points)</p>
+                    <p class="mb-1">Prize Money: £51.00</p>
+                    <p class="mb-1">No. of Players: 34</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Chris down to 6<br>Craig up to 7<br>Jon G up to 3.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week07ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 07">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 06 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 06</a>
+                    <span class="ms-3 text-body fw-medium">Tim Allsopp</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">22 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week06ScoreDetails" aria-expanded="false" aria-controls="week06ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week06ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Tim Allsopp</strong> (22 points)</p>
+                    <p class="mb-1">Prize Money: £49.50</p>
+                    <p class="mb-1">No. of Players: 30</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Tim down to 3<br>Squigs up to 5<br>Gaz up to 12.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week06ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 06">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 05 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 05</a>
+                    <span class="ms-3 text-body fw-medium">Jon Murchington</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">23 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week05ScoreDetails" aria-expanded="false" aria-controls="week05ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week05ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Jon Murchington</strong> (23 points)</p>
+                    <p class="mb-1">Prize Money: £45.00</p>
+                    <p class="mb-1">No. of Players: 30</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Jon down to 11<br>Squigsy down to 4<br>Tealy up to 7<br>Chappy up to 12<br>Rochy up to 8.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week05ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 05">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 04 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 04</a>
+                    <span class="ms-3 text-body fw-medium">Mark Howell</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">24 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week04ScoreDetails" aria-expanded="false" aria-controls="week04ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week04ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Mark Howell</strong> (24 points)</p>
+                    <p class="mb-1">Prize Money: £54.00</p>
+                    <p class="mb-1">No. of Players: 36</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Howla down to 4<br>Jon Goodman down to 2.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week04ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 04">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 03 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 03</a>
+                    <span class="ms-3 text-body fw-medium">Jon Boden</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">22 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week03ScoreDetails" aria-expanded="false" aria-controls="week03ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week03ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Jon Boden</strong> (22 points)</p>
+                    <p class="mb-1">Prize Money: £49.50</p>
+                    <p class="mb-1">No. of Players: 33</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Jon down to 5<br>Lee Eastoe up to 4<br>Toughy up to 4<br>Chris up to 7.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week03ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 03">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 02 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 02</a>
+                    <span class="ms-3 text-body fw-medium">Richard Craven Jones</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">23 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week02ScoreDetails" aria-expanded="false" aria-controls="week02ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week02ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Richard Craven Jones</strong> (23 points)</p>
+                    <p class="mb-1">Prize Money: £60.00</p>
+                    <p class="mb-1">No. of Players: 40</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Matt down to 3<br>RJC down to 13<br>Warren Crook up to 7.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week02ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 02">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- Week 01 Entry -->
+              <li class="py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#" class="text-decoration-none text-body fw-medium">Week 01</a>
+                    <span class="ms-3 text-body fw-medium">Dave Harrison</span>
+                  </div>
+                  <div class="text-end d-flex align-items-center">
+                    <small class="text-muted">22 pts</small>
+                    <a href="#" role="button" class="ms-2 text-decoration-none text-body" data-bs-toggle="collapse" data-bs-target="#week01ScoreDetails" aria-expanded="false" aria-controls="week01ScoreDetails">
+                      <i class="ai-arrow-right" style="display: inline-block; transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="collapse pt-2" id="week01ScoreDetails" data-bs-parent="#scoresAccordion">
+                  <div class="p-3 bg-secondary rounded shadow-sm position-relative">
+                    <p class="mb-2">Winner: <strong class="winner-pulse">Dave Harrison</strong> (22 points)</p>
+                    <p class="mb-1">Prize Money: £55.50</p>
+                    <p class="mb-1">No. of Players: 37</p>
+                    <hr class="my-3">
+                    <p class="mb-2">H'cap Changes: </p>
+                    <p class="mb-0">Ian Ind down to 5<br>Toughy down to 3<br>Nick up to 4<br>Jon B up to 6<br>Tim A up to 4<br>Neale A up to 9.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#week01ScoresModal" class="position-absolute text-decoration-none d-flex align-items-center" style="bottom: 0.5rem; right: 0.5rem;" aria-label="View full scores for Week 01">
+                      <small class="text-muted me-1">full results</small>
+                      <i class="ai-arrow-right fs-1 text-body" style="transform: rotate(-45deg);"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            
+            </ul>
+          </div>
         </div>
+      </section>
+      <!-- End Data Entries List Section -->
+
+       </main> <!-- End of .page-wrapper -->
+
+    <!-- MODALS SECTION -->
+    <!-- Week 09 Scores Modal -->
+    <div class="modal fade" id="week09ScoresModal" tabindex="-1" aria-labelledby="week09ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week09ScoresModalLabel">WEEK 09 Scores - £58.50</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>LEE EASTOE</td><td class="text-center">24</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#2</td><td>CHRIS BOARDS</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#2</td><td>MARK JACKSON</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#2</td><td>SIMON CARTER</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#2</td><td>STEVE ROBINSON</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>CRAIG MILLIGAN</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>JAMES HARRISON</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>JOHN GOODMAN</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>MARTIN STEVENSON</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>MICK SANDOZ</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#6</td><td>NICK STABLEFORD</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>MARC ALLSOPP</td><td class="text-center">20</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>PAUL SMITH</td><td class="text-center">20</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>STEPHEN WALLACE</td><td class="text-center">20</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>ADAM TEALE</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>JON BODEN</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>PAUL CHAPMAN</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>RICHARD CRAVEN JONES</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>TIM ALLSOPP</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#20</td><td>ANDY RAY</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#20</td><td>IAN IND</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#20</td><td>MARK JEFFRIES</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#20</td><td>MARK READY</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">#24</td><td>JEZ WILLIAMS</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>DAVE HARRISON</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>MARK HOWELL</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>PETER JEFFRIES</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>RICHARD SHAW</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>STEVE SUCH</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">#30</td><td>TOM GREEN</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>ADE COOPER</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>JAMES TOUGH</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>KEVIN HORTON</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>MARK MOSLEY</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>TONY MYNARD</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#31</td><td>STUART MURDOCK</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">#37</td><td>JAMES SIMMONS</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">#38</td><td>RICHARD BIRD</td><td class="text-center">11</td></tr>
+                  <tr> <td class="text-center">#39</td><td>GARY ADCOCK</td><td class="text-center">8</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Week 08 Scores Modal -->
+    <div class="modal fade" id="week08ScoresModal" tabindex="-1" aria-labelledby="week08ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week08ScoresModalLabel">WEEK 08 Scores - £43.50</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>ADE COOPER</td><td class="text-center">24</td></tr>
+                  <tr> <td class="text-center">#2</td><td>PETER JEFFRIES</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#3</td><td>JAMES TOUGH</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#3</td><td>JEZ WILLIAMS</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#3</td><td>MICK SANDOZ</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#3</td><td>STEVE ROBINSON</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>ADAM TEALE</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>DAVE HARRISON</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>LEE EASTOE</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>PAUL CHAPMAN</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>RICHARD SHAW</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>STEVE SUCH</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>TONY MYNARD</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#14</td><td>MARK MOSLEY</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#14</td><td>RICHARD BIRD</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#14</td><td>STEPHEN WALLACE</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#14</td><td>TIM ALLSOPP</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">#18</td><td>STUART MURDOCK</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>IAN IND</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>MARK READY</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>ANDY RAY</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>CHRIS BOARDS</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>TOM GREEN</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>JAMES SIMMONS</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>STUART PICKERSGILL</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#26</td><td>JON BODEN</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#26</td><td>MARC ALLSOPP</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#26</td><td>MARK JACKSON</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">#29</td><td>JON MURCHINGTON</td><td class="text-center">9</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 07 Scores Modal -->
+    <div class="modal fade" id="week07ScoresModal" tabindex="-1" aria-labelledby="week07ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week07ScoresModalLabel">WEEK 07 Scores - £51.00</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>CHRIS BOARDS</td><td class="text-center">25</td></tr>
+                  <tr> <td class="text-center">#2</td><td>PAUL SMITH</td><td class="text-center">20</td></tr>
+                  <tr> <td class="text-center">#3</td><td>JAMES TOUGH</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>JEZ WILLIAMS</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>MARC ALLSOPP</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>MARK MOSLEY</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>MARK READY</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>RICHARD SHAW</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#9</td><td>ANDY RAY</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#9</td><td>BRIAN ELLIOT</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#9</td><td>CRAIG MILLIGAN</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#9</td><td>KEVIN HORTON</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#13</td><td>JON BODEN</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#13</td><td>RICHARD BIRD</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#13</td><td>TIM ALLSOPP</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#13</td><td>TOM GREEN</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#17</td><td>ADAM TEALE</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#17</td><td>ADE COOPER</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#17</td><td>DAVE HARRISON</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#17</td><td>PAUL BLADES</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>RICHARD CRAVEN JONES</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>STEPHEN WALLACE</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#21</td><td>TONY MYNARD</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#24</td><td>ADAM SIMCOX</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#24</td><td>IAN IND</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#24</td><td>LES LAWRENCE</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#24</td><td>STUART MURDOCK</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>JOHN GOODMAN</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>JON MURCHINGTON</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>STEVE ROBINSON</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>TIM LEWIS</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#32</td><td>GARY ADCOCK</td><td class="text-center">11</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#32</td><td>MARTIN STEVENSON</td><td class="text-center">11</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#32</td><td>STEVE SUCH</td><td class="text-center">11</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 06 Scores Modal -->
+    <div class="modal fade" id="week06ScoresModal" tabindex="-1" aria-labelledby="week06ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week06ScoresModalLabel">WEEK 06 Scores - £49.50</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>TIM ALLSOPP</td><td class="text-center">22</td></tr>
+                  <tr> <td class="text-center">#2</td><td>KEVIN HORTON</td><td class="text-center">21</td></tr>
+                  <tr> <td class="text-center">#3</td><td>PETER JEFFRIES</td><td class="text-center">20</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>MICK SANDOZ</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>PAUL SMITH</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#4</td><td>SIMON CARTER</td><td class="text-center">19</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>IAN IND</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>JON MURCHINGTON</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>STEVE SUCH</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>TIM LEWIS</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#7</td><td>TONY MYNARD</td><td class="text-center">18</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>MARK JEFFRIES</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>MARK MOSLEY</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#12</td><td>STEVE TARMEY</td><td class="text-center">17</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>NICK STABLEFORD</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>ROSS JEFFRIES</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>STEPHEN WALLACE</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#15</td><td>STEVE ROBINSON</td><td class="text-center">16</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>JAMES TOUGH</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>JEZ WILLIAMS</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>JON BODEN</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#19</td><td>MARK JACKSON</td><td class="text-center">15</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#23</td><td>ADE COOPER</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#23</td><td>JOHN GOODMAN</td><td class="text-center">14</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>ADAM TEALE</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>MARK READY</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#25</td><td>PAUL CHAPMAN</td><td class="text-center">13</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>ANDY RAY</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">=&nbsp;#28</td><td>STEVE ROCHESTER</td><td class="text-center">12</td></tr>
+                  <tr> <td class="text-center">#30</td><td>GARY ADCOCK</td><td class="text-center">11</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 05 Scores Modal -->
+    <div class="modal fade" id="week05ScoresModal" tabindex="-1" aria-labelledby="week05ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week05ScoresModalLabel">WEEK 05 Scores - £45.00</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>JON MURCHINGTON</td><td class="text-center">23</td></tr>
+                    <tr> <td class="text-center">#2</td><td>STEPHEN WALLACE</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#3</td><td>IAN IND</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#3</td><td>JOHN GOODMAN</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#3</td><td>RICHARD BIRD</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>ADAM SIMCOX</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>MARK JACKSON</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>SIMON CARTER</td><td class="text-center">20</td></tr>
+ <tr> <td class="text-center">=&nbsp;#6</td><td>TOM GREEN</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>LEE EASTOE</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>ROSS KELLY</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>STUART MURDOCK</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>ADAM TEALE</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>GARY ADCOCK</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>PETER JEFFRIES</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>STEVE SUCH</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>ADE COOPER</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>LES LAWRENCE</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>STEVE TARMEY</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>RICHARD CRAVEN JONES</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>TIM LEWIS</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">#22</td><td>KEVIN HORTON</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#23</td><td>CHRIS BOARDS</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#23</td><td>JAMES TOUGH</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#23</td><td>PAUL SMITH</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#26</td><td>CRAIG MILLIGAN</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#26</td><td>NICK STABLEFORD</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#28</td><td>MARK MOSLEY</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#28</td><td>PAUL CHAPMAN</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">#30</td><td>STEVE ROCHESTER</td><td class="text-center">8</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 04 Scores Modal -->
+    <div class="modal fade" id="week04ScoresModal" tabindex="-1" aria-labelledby="week04ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week04ScoresModalLabel">WEEK 04 Scores - £54.00</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>MARK HOWELL</td><td class="text-center">24</td></tr>
+                    <tr> <td class="text-center">#2</td><td>JOHN GOODMAN</td><td class="text-center">23</td></tr>
+                    <tr> <td class="text-center">#3</td><td>TIM LEWIS</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#4</td><td>RICHARD BIRD</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#4</td><td>TOM GREEN</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>CHRIS BOARDS</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>JON MURCHINGTON</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>PAUL BLADES</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>SIMON CARTER</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>TIM ALLSOPP</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>JON BODEN</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>MARTIN STEVENSON</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>IAN IND</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>MARK JACKSON</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#13</td><td>STEVE SUCH</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#16</td><td>JEZ WILLIAMS</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#16</td><td>LES LAWRENCE</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#16</td><td>STEVE TARMEY</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>CRAIG MILLIGAN</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>GARY ADCOCK</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>MARC ALLSOPP</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>STEVE ROBINSON</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>STEVE ROCHESTER</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#19</td><td>RICHARD COOK</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#25</td><td>DAVE HARRISON</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#25</td><td>NICK STABLEFORD</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#25</td><td>PAUL SMITH</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#25</td><td>TONY MYNARD</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#29</td><td>KEVIN HORTON</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#29</td><td>MARK MOSLEY</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>LEE EASTOE</td><td class="text-center">11</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>MARK READY</td><td class="text-center">11</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>STEPHEN WALLACE</td><td class="text-center">11</td></tr>
+                    <tr> <td class="text-center">#34</td><td>RICHARD CRAVEN JONES</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">#35</td><td>STUART MURDOCK</td><td class="text-center">9</td></tr>
+                    <tr> <td class="text-center">#36</td><td>PAUL CHAPMAN</td><td class="text-center">6</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 03 Scores Modal -->
+    <div class="modal fade" id="week03ScoresModal" tabindex="-1" aria-labelledby="week03ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week03ScoresModalLabel">WEEK 03 Scores - £49.50</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>JON BODEN</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#2</td><td>JON MURCHINGTON</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#2</td><td>MARK READY</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#4</td><td>STUART MURDOCK</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#4</td><td>RICHARD BIRD</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>LEE EASTOE</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>MARK MOSLEY</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>NICK STABLEFORD</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>STEPHEN WALLACE</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>TIM ALLSOPP</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>ANDY RAY</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>DAVE HARRISON</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>ROSS JEFFRIES</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>STEVE ROBINSON</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#15</td><td>IAN IND</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#15</td><td>SIMON CARTER</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#15</td><td>TOM GREEN</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#18</td><td>MARK JACKSON</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#18</td><td>TONY MYNARD</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>ADE COOPER</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>JAMES TOUGH</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>MARC ALLSOPP</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>TIM LEWIS</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#24</td><td>ADAM TEALE</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#24</td><td>CHRIS BOARDS</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#24</td><td>GARY ADCOCK</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#24</td><td>JEZ WILLIAMS</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#24</td><td>MARK JEFFRIES</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">#29</td><td>STEVE SUCH</td><td class="text-center">11</td></tr>
+                    <tr> <td class="text-center">#30</td><td>KEVIN HORTON</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">#31</td><td>CRAIG MILLIGAN</td><td class="text-center">9</td></tr>
+                    <tr> <td class="text-center">#32</td><td>RICHARD CRAVEN JONES</td><td class="text-center">8</td></tr>
+                    <tr> <td class="text-center">#33</td><td>PAUL SMITH</td><td class="text-center">7</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 02 Scores Modal -->
+    <div class="modal fade" id="week02ScoresModal" tabindex="-1" aria-labelledby="week02ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week02ScoresModalLabel">WEEK 02 Scores - £60.00</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>MATT SPENCER</td><td class="text-center">28</td></tr>
+                    <tr> <td class="text-center">#2</td><td>RICHARD CRAVEN JONES</td><td class="text-center">23</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#3</td><td>LES LAWRENCE</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#3</td><td>ANDY SPENCER</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">#5</td><td>RICHARD BIRD</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>ADE COOPER</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#6</td><td>TIM ALLSOPP</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#8</td><td>ADAM SIMCOX</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#8</td><td>IAN IND</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#8</td><td>MARK MOSLEY</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>CHRIS BOARDS</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>JEZ WILLIAMS</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>JON BODEN</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>JON MURCHINGTON</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>MARC ALLSOPP</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>NICK STABLEFORD</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>PETER JEFFRIES</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>STEVE SUCH</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#11</td><td>TIM LEWIS</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>JOHN GOODMAN</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>KEVIN HORTON</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>MARK JEFFRIES</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>SIMON CARTER</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>TOM GREEN</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>WARREN CROOK</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>CRAIG MILLIGAN</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>JAMES WILLIS</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#28</td><td>ADAM TEALE</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#28</td><td>JAMES TOUGH</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#28</td><td>MICK SANDOZ</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>MARK HOWELL</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>MARK READY</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>MARTIN STEVENSON</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>TONY MYNARD</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#35</td><td>ANDY RAY</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#35</td><td>STUART MURDOCK</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#37</td><td>DAVE HARRISON</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#37</td><td>GARY ADCOCK</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">#39</td><td>PAUL GARRATT</td><td class="text-center">11</td></tr>
+                    <tr> <td class="text-center">#40</td><td>STEPHEN WALLACE</td><td class="text-center">9</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 01 Scores Modal -->
+    <div class="modal fade" id="week01ScoresModal" tabindex="-1" aria-labelledby="week01ScoresModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="week01ScoresModalLabel">WEEK 01 Scores - £55.50</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">POS</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col" class="text-center">POINTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="winner-row-highlight"> <td class="text-center">#1</td><td>DAVE HARRISON</td><td class="text-center">22</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#2</td><td>IAN IND</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#2</td><td>JAMES TOUGH</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#2</td><td>TONY MYNARD</td><td class="text-center">21</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#5</td><td>ADAM SIMCOX</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#5</td><td>GARY ADCOCK</td><td class="text-center">20</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#7</td><td>JEZ WILLIAMS</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#7</td><td>MARK JACKSON</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#7</td><td>STEVE SUCH</td><td class="text-center">19</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>ANDY RAY</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>JOHN GOODMAN</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>STEVE TARMEY</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>NICK STABLEFORD</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#10</td><td>SIMON CARTER</td><td class="text-center">18</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#15</td><td>JON BODEN</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#15</td><td>MARK READY</td><td class="text-center">17</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>ROSS KELLY</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#17</td><td>WARREN CROOK</td><td class="text-center">16</td></tr>
+                    <tr> <td class="text-center">#19</td><td>RICHARD BIRD</td><td class="text-center">15</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>CHRIS BOARDS</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#20</td><td>MARK MOSLEY</td><td class="text-center">14</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#22</td><td>JON MURCHINGTON</td><td class="text-center">13</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#22</td><td>LEE EASTOE</td><td class="text-center">13</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#22</td><td>MARC ALLSOPP</td><td class="text-center">13</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#22</td><td>PAUL CHAPMAN</td><td class="text-center">13</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#22</td><td>TIM ALLSOPP</td><td class="text-center">13</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#27</td><td>ADE COOPER</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#27</td><td>MARK HOWELL</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#27</td><td>MICK SANDOZ</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#27</td><td>ROSS JEFFRIES</td><td class="text-center">12</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>NEALE ASTON</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>PETER JEFFRIES</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>SCOTT WORRALL</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">=&nbsp;#31</td><td>STUART MURDOCK</td><td class="text-center">10</td></tr>
+                    <tr> <td class="text-center">#35</td><td>STEVE ROBINSON</td><td class="text-center">9</td></tr>
+                    <tr> <td class="text-center">#36</td><td>TIM LEWIS</td><td class="text-center">8</td></tr>
+                    <tr> <td class="text-center">#37</td><td>MARK JEFFRIES</td><td class="text-center">7</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODALS SECTION -->
+
+    <!-- Score Page Rules Modal -->
+    <div class="modal fade" id="scorePageRulesModal" tabindex="-1" aria-labelledby="scorePageRulesModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="scorePageRulesModalLabel">Page Info</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">Click the arrow next to a score entry to expand and view full details for that week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Score Page Rules Modal -->
 
 
 
-  <script src="assets/script.js" defer></script>
-  
+ <!-- Back to top button -->
+ <a class="btn-scroll-top" href="#top" data-scroll aria-label="Scroll back to top">
+  <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></circle>
+  </svg>
+  <i class="ai-arrow-up"></i>
+</a>
+
+<!-- Bootstrap + Theme scripts -->
+<script src="js/theme.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // --- Script to manage arrow rotation and auto-collapse on modal close ---
+
+    // Part 1: Manage arrow icon rotation for collapsible sections
+    const accordionCollapsibleItems = document.querySelectorAll('#scoresAccordion .collapse');
+
+    accordionCollapsibleItems.forEach(function (item) {
+      const triggerLink = document.querySelector(`[data-bs-target="#${item.id}"]`);
+      const arrowIcon = triggerLink ? triggerLink.querySelector('i.ai-arrow-right') : null;
+
+      if (arrowIcon) {
+        // Set initial state based on HTML (already -45deg for collapsed)
+        item.addEventListener('show.bs.collapse', function () {
+          arrowIcon.style.transform = 'rotate(-135deg)'; // Expanded state (points up-left)
+        });
+
+        item.addEventListener('hide.bs.collapse', function () {
+          arrowIcon.style.transform = 'rotate(-45deg)'; // Collapsed state (points down-right)
+        });
+      }
+    });
+
+    // Part 2: Auto-collapse weekly detail section when its modal is closed
+    const scoreModals = document.querySelectorAll('[id^="week"][id$="ScoresModal"]');
+    scoreModals.forEach(modal => {
+      modal.addEventListener('hidden.bs.modal', function () {
+        const modalId = modal.id; // e.g., week09ScoresModal
+        const weekIdPart = modalId.replace('ScoresModal', ''); // e.g., week09
+        const collapseId = weekIdPart + 'ScoreDetails'; // e.g., week09ScoreDetails
+        const collapsibleElement = document.getElementById(collapseId);
+
+        if (collapsibleElement && collapsibleElement.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getInstance(collapsibleElement) || new bootstrap.Collapse(collapsibleElement);
+          bsCollapse.hide(); // This will trigger the 'hide.bs.collapse' event, which resets the arrow
+        }
+      });
+    });
+  });
+</script>
 </body>
-
 </html>
