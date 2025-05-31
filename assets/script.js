@@ -348,4 +348,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // The mainContentElement is selected but no longer has its opacity/autoAlpha set by JS here.
     // If it appears faded, that styling is coming from your CSS.
+
+    // --- FAQ Section Logic ---
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                // Close other open FAQs when one is opened
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+            });
+        }
+    });
+
+    // --- Footer - Dynamically update year ---
+    const currentYearSpan = document.getElementById('currentYear');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
 });

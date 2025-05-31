@@ -130,3 +130,119 @@ main {
   
   
 }
+
+
+/* =================================== */
+/* FAQ Section Styles                  */
+/* =================================== */
+
+.faq-section {
+    margin-top: 40px;
+    padding: 0 20px 40px 20px; /* Added bottom padding */
+}
+
+.faq-section h2 {
+    font-size: 1.8em;
+    color: #3498db; /* A prominent blue, adjust to match your theme's blue */
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.faq-item {
+    /* background-color: #282828; */ /* Removed background */
+    /* border-radius: 10px; */ /* No longer needed without background */
+    margin-bottom: 15px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */ /* Removed shadow */
+    /* overflow: hidden; */ /* No longer needed */
+}
+
+.faq-question {
+    padding: 20px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #e0e0e0; /* Light text color for questions */
+    transition: background-color 0.2s ease;
+}
+
+.faq-item:hover .faq-question {
+    /* background-color: #303030; */ /* Removed hover background */
+    color: #3498db; /* Change text color on hover for feedback */
+}
+
+.faq-item.active .faq-question {
+    /* background-color: #333333; */ /* Removed active background */
+    /* border-bottom: 1px solid #3d3d3d; */ /* Optional: keep a subtle separator or remove */
+    color: #3498db; /* Highlight active question text */
+}
+
+.faq-question i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #1abc9c; /* Teal color for icon, adjust to match your theme's teal */
+    font-size: 1.5em; /* Made icon larger */
+    font-weight: 300; /* Make plus icon a bit thinner if desired */
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg); /* Rotate plus to an 'x' */
+    color: #3498db; /* Match active question text color */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    transition: max-height 0.35s ease-out, padding 0.35s ease-out;
+    font-size: 1em;
+    line-height: 1.7;
+    color: #c0c0c0; /* Slightly dimmer gray for answer text */
+    /* background-color: #2c2c2c; */ /* Removed background for the answer area */
+    border-bottom: 1px solid #3a3a3a; /* Add a subtle separator below the answer */
+}
+
+.faq-item.active .faq-answer {
+    max-height: 600px; /* Adjust if your answers are very long */
+    padding: 20px 25px;
+}
+
+.faq-answer p {
+    margin: 0 0 12px 0;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+/* =================================== */
+/* Footer Styles                       */
+/* =================================== */
+
+footer {
+    background-color: rgb(20, 20, 20); /* Slightly darker than main background or a contrasting dark shade */
+    color: #a0a0a0; /* Light gray text, not too bright */
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 50px; /* Space above the footer */
+    border-top: 1px solid #333; /* Subtle top border */
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Optional: If you add links to your footer */
+footer a {
+    color: #1abc9c; /* Teal color for links, matching other elements */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
