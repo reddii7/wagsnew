@@ -367,6 +367,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Scores List Accordion Logic (similar to FAQ) ---
+    const scoreItems = document.querySelectorAll('.score-item');
+    if (scoreItems.length > 0) { // Only run if score items exist on the page
+        scoreItems.forEach(item => {
+            const header = item.querySelector('.score-header');
+            if (header) {
+                header.addEventListener('click', () => {
+                    // Close other open score items
+                    scoreItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    item.classList.toggle('active');
+                });
+            }
+        });
+    }
+
     // --- Footer - Dynamically update year ---
     const currentYearSpan = document.getElementById('currentYear');
     if (currentYearSpan) {
