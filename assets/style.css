@@ -29,7 +29,7 @@ main {
 .card-gray-lg,
 .card-teal-lg {
     height: 255px;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
