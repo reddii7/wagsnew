@@ -38,7 +38,7 @@ main {
     /* Animation for fading in from center */
     opacity: 0; /* Initial state for animation */
     animation-name: fadeInFromCenter;
-    animation-duration: 0.9s; /* You can adjust the speed */
+    animation-duration: 0.6s; /* You can adjust the speed */
     animation-timing-function: ease-out;
     animation-fill-mode: forwards; /* Retains the state of the last keyframe */
 }
