@@ -75,8 +75,8 @@ main {
     justify-content: center;
     min-height: 160px;
     padding: 16px;
-    padding-bottom: 140px;
-    padding-top: 140px;
+    padding-bottom: 160px;
+    padding-top: 240px;
 }
 
 /* Title Style */
