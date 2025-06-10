@@ -121,6 +121,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scores Modal
     if (scoresLink && scoresModal && scoresModalContent && closeModalButtonScores) {
+        console.log('Scores modal elements found. Attaching event listener to scoresLink.');
+        scoresLink.addEventListener('click', function(event) {
+            console.log('Scores link clicked. Preventing default navigation.');
+            event.preventDefault();
+            if (scoresModal) scoresModal.scrollTop = 0;
+            window.scrollTo(0, 0);
+            document.body.classList.add('modal-open-no-scroll');
+
+            gsap.set(scoresModalContent, { x: '100vw', autoAlpha: 0 });
+            gsap.to(scoresModal, {
+                duration: 0.3,
+                autoAlpha: 1,
+                ease: "power2.out",
+                onComplete: addAutoCloseScrollListener,
+                onCompleteParams: [scoresModal, closeScoresModal]
+            });
+            gsap.to(scoresModalContent, {
+                duration: 0.5,
+                x: 0,
+                autoAlpha: 1,
+                ease: "power2.out",
+                delay: 0.1,
+            });
+        });
+
         function closeScoresModal() {
             removeAutoCloseScrollListener(scoresModal);
             gsap.to(scoresModalContent, {
@@ -139,12 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
-        // If scoresLink exists, it will now navigate by default.
-        // The modal opening logic for scoresLink has been removed.
-        // We keep the close logic in case the modal is used/opened by other means.
-        console.log('Scores modal elements found. scoresLink will now navigate by default.');
-
         closeModalButtonScores.addEventListener('click', closeScoresModal);
         scoresModal.addEventListener('click', function(event) {
             if (event.target === scoresModal) {
@@ -348,47 +367,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // The mainContentElement is selected but no longer has its opacity/autoAlpha set by JS here.
     // If it appears faded, that styling is coming from your CSS.
-
-    // --- FAQ Section Logic ---
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        if (question) {
-            question.addEventListener('click', () => {
-                // Close other open FAQs when one is opened
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                item.classList.toggle('active');
-            });
-        }
-    });
-
-    // --- Scores List Accordion Logic (similar to FAQ) ---
-    const scoreItems = document.querySelectorAll('.score-item');
-    if (scoreItems.length > 0) { // Only run if score items exist on the page
-        scoreItems.forEach(item => {
-            const header = item.querySelector('.score-header');
-            if (header) {
-                header.addEventListener('click', () => {
-                    // Close other open score items
-                    scoreItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    item.classList.toggle('active');
-                });
-            }
-        });
-    }
-
-    // --- Footer - Dynamically update year ---
-    const currentYearSpan = document.getElementById('currentYear');
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
-    }
 });

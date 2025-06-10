@@ -3,86 +3,104 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(27, 27, 27);
-    color: #f4f4f4; /* Changed to a light color for contrast with dark background */
+    color: #f4f4f4;
 }
 
-
+header {
+    background-color: #317EFB;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
 
 main {
     padding: 1em;
 }
 
-@keyframes fadeInFromCenter {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* Update Message Banner */
+.update-message {
+    background-color: rgb(60, 80, 110);
+    color: #f0f0f0;
+    text-align: center;
+    padding: 10px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
 }
 
 /* Common Card Styles */
 .card-blue-med,
 .card-coral-med,
 .card-gray-lg,
-.card-teal-lg {
+.card-teal-lg,
+.card-bg-match-med {
     height: 255px;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
     position: relative;
-
-    /* Animation for fading in from center */
-    opacity: 0; /* Initial state for animation */
-    animation-name: fadeInFromCenter;
-    animation-duration: 0.6s; /* You can adjust the speed */
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards; /* Retains the state of the last keyframe */
 }
 
 .card-blue-med {
     background-color: rgb(153, 177, 220);
-    color: #000000; /* Dark text on light blue background */
+    color: #000;
 }
 
 .card-coral-med {
     background-color: rgb(240, 158, 129);
-    color: #000000; /* Dark text on light coral background */
+    color: #000;
 }
 
 .card-gray-lg {
-    height: 510px;
     background-color: rgb(67, 67, 67);
-    color: inherit; /* Inherits light text color from body for better contrast on dark gray */
+    color: inherit;
 }
 
 .card-teal-lg {
-    height: 510px;
     background-color: rgb(157, 196, 201);
-    color: #000000; /* Dark text on light teal background */
+    color: #000;
 }
 
-.card-dark-flex {
-    /* height: 255px; */ /* Removed fixed height to allow content to determine height */
-    border-radius: 38px; /* Increased from 25px */
-    padding: 30px;       /* Increased from 20px */
-    box-sizing: border-box;
-    margin-top: 8px;     /* Increased from 5px */
-    position: relative;
-    background-color: rgb(26, 26, 26);
-} 
+.card-bg-match-med {
+    background-color: rgb(27, 27, 27);
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 16px;
+    padding-bottom: 140px;
+    padding-top: 140px;
+}
 
-
-
+/* Title Style */
+.wags-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 3.8em;
+    font-weight: 700;
+    color: #f4f4f4;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    padding-left: 4px;
+    font-family: 'Anton', Arial, sans-serif;
+}
 
 /* Common styles for absolutely positioned text within cards */
 .text-gray,
 .text-blue {
     position: absolute;
-    bottom: 20px; /* Aligns with card padding */
+    bottom: 20px;
     left: 20px;
     font-size: 48px;
     font-weight: 600;
@@ -97,32 +115,109 @@ main {
     color: rgb(153, 177, 220);
 }
 
-
 .plus-icon-bottom-right {
     position: absolute;
-    bottom: 20px; /* Adjust as needed for vertical spacing from the bottom */
-    right: 20px;  /* Adjust as needed for horizontal spacing from the right */
-    font-size: 2em; /* Or your preferred size, e.g., 24px */
-    font-weight: 300; /* Lighter font weight for a thinner look */
-}
-
-.plus-icon-navigate {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 20px;
+    right: 20px;
     font-size: 2em;
-   color: rgb(44, 79, 83);
+    font-weight: 300;
 }
 
-/* Add this to your style.css */
-.card-link-wrapper {
-    display: block; /* Ensures the link takes up the block space of the card */
-    text-decoration: none; /* Removes the default underline from the link */
-    color: inherit; /* Makes the text inside inherit its color, rather than default link blue */
+.card-gray-lg .plus-icon-bottom-right {
+    color: rgb(153, 177, 220);
 }
 
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    visibility: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 100vh;
+}
 
+.modal-content {
+    background-color: rgb(27, 27, 27);
+    color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    border-radius: 25px;
+    width: 95%;
+    max-width: 768px;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    text-align: left;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+}
 
+.close-button {
+    color: #e0e0e0;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.2s ease-in-out;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Ensure table text is also light */
+.modal-content .scores-table th,
+.modal-content .scores-table td {
+    color: #f0f0f0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-content .scores-table th {
+    font-weight: 600;
+    color: #fff;
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Prevent body and html scrolling when a modal is open */
+html.modal-open-no-scroll,
+body.modal-open-no-scroll {
+    overflow: hidden;
+}
 
 /* Prevent plus icon links from changing color or getting underlined on interaction */
 .plus-icon-link,
@@ -130,221 +225,16 @@ main {
 .plus-icon-link:active,
 .plus-icon-link:visited,
 .plus-icon-link:focus {
-    text-decoration: none; /* Remove underline from the link */
-    color: inherit;        /* Ensure the link inherits its color from the parent card,
-                               preventing default browser link color changes on interaction.
-                               The icon inside will then inherit this consistent color. */
+    text-decoration: none;
+    color: inherit;
 }
-/* In style.css */
+
+/* Logo Style */
 .logo-large {
-  display: block; /* To enable margin auto for centering if not using text-align on parent */
-  margin-top: 60px; /* Increased space above the logo */
-  margin-bottom: 120px; /* Increased space below the logo */
-  width: 200px; /* Or your desired width */
-  max-width: 100%; /* Ensures responsiveness */
-  height: auto;   /* Maintain aspect ratio */
-  
-  
-}
-
-/* Basic Page Header for sub-pages like scores.html */
-.page-header {
-    padding: 20px;
-    background-color: rgb(30,30,30);
-    text-align: center;
-    margin-bottom: 20px;
-}
-.page-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-    color: #3498db;
-}
-.page-header .back-link {
-    position: absolute;
-    left: 20px;
-    top: 25px; /* Adjust as needed */
-    color: #1abc9c;
-    text-decoration: none;
-    font-size: 1em;
-}
-.page-header .back-link:hover {
-    color: #3498db;
-}
-
-/* =================================== */
-/* FAQ Section Styles                  */
-/* =================================== */
-
-.faq-section {
-    margin-top: 40px;
-    padding: 0 20px 40px 20px; /* Added bottom padding */
-}
-
-.faq-section h2 {
-    font-size: 1.8em;
-    color: #3498db; /* A prominent blue, adjust to match your theme's blue */
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 700;
-}
-
-.faq-item {
-    /* background-color: #282828; */ /* Removed background */
-    /* border-radius: 10px; */ /* No longer needed without background */
-    margin-bottom: 15px;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */ /* Removed shadow */
-    /* overflow: hidden; */ /* No longer needed */
-}
-
-.faq-question {
-    padding: 20px 25px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.1em;
-    color: #e0e0e0; /* Light text color for questions */
-    transition: background-color 0.2s ease;
-}
-
-.faq-item:hover .faq-question {
-    /* background-color: #303030; */ /* Removed hover background */
-    color: #3498db; /* Change text color on hover for feedback */
-}
-
-.faq-item.active .faq-question {
-    /* background-color: #333333; */ /* Removed active background */
-    /* border-bottom: 1px solid #3d3d3d; */ /* Optional: keep a subtle separator or remove */
-    color: #3498db; /* Highlight active question text */
-}
-
-.faq-question i {
-    transition: transform 0.3s ease, color 0.3s ease;
-    color: #1abc9c; /* Teal color for icon, adjust to match your theme's teal */
-    font-size: 1.5em; /* Made icon larger */
-    font-weight: 300; /* Make plus icon a bit thinner if desired */
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(45deg); /* Rotate plus to an 'x' */
-    color: #3498db; /* Match active question text color */
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 25px;
-    transition: max-height 0.35s ease-out, padding 0.35s ease-out;
-    font-size: 1em;
-    line-height: 1.7;
-    color: #c0c0c0; /* Slightly dimmer gray for answer text */
-    /* background-color: #2c2c2c; */ /* Removed background for the answer area */
-    border-bottom: 1px solid #3a3a3a; /* Add a subtle separator below the answer */
-}
-
-.faq-item.active .faq-answer {
-    max-height: 600px; /* Adjust if your answers are very long */
-    padding: 20px 25px;
-}
-
-.faq-answer p {
-    margin: 0 0 12px 0;
-}
-
-.faq-answer p:last-child {
-    margin-bottom: 0;
-}
-
-/* =================================== */
-/* Scores List Section Styles          */
-/* (Similar to FAQ)                  */
-/* =================================== */
-
-.scores-list-section {
-    margin-top: 20px; /* Adjusted from FAQ's 40px as page-header adds space */
-    padding: 0 20px 40px 20px;
-}
-
-/* No separate h2 for scores list if page-header h1 is used */
-
-.score-item {
-    margin-bottom: 15px;
-}
-
-.score-header {
-    padding: 18px 25px; /* Slightly less padding than FAQ for a denser list if desired */
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.05em; /* Slightly smaller than FAQ question */
-    color: #e0e0e0;
-    transition: color 0.2s ease; /* Simpler transition */
-    border-bottom: 1px solid #3a3a3a; /* Separator for each score header */
-}
-
-.score-item:hover .score-header {
-    color: #3498db;
-}
-
-.score-item.active .score-header {
-    color: #3498db;
-}
-
-.score-header i {
-    transition: transform 0.3s ease, color 0.3s ease;
-    color: #1abc9c;
-    font-size: 1.4em; /* Slightly smaller than FAQ icon */
-    font-weight: 300;
-}
-
-.score-item.active .score-header i {
-    transform: rotate(45deg);
-    color: #3498db;
-}
-
-.score-details {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 25px;
-    transition: max-height 0.35s ease-out, padding 0.35s ease-out;
-    font-size: 0.95em; /* Slightly smaller than FAQ answer */
-    line-height: 1.6;
-    color: #b0b0b0; /* Slightly different gray for score details */
-    /* border-bottom: 1px solid #3a3a3a; */ /* Moved separator to header */
-}
-
-.score-item.active .score-details {
-    max-height: 800px; /* Adjust if score details are very long */
-    padding: 15px 25px;
-}
-/* =================================== */
-/* Footer Styles                       */
-/* =================================== */
-
-footer {
-    background-color: rgb(20, 20, 20); /* Slightly darker than main background or a contrasting dark shade */
-    color: #a0a0a0; /* Light gray text, not too bright */
-    text-align: center;
-    padding: 25px 20px;
-    margin-top: 50px; /* Space above the footer */
-    border-top: 1px solid #333; /* Subtle top border */
-    font-size: 0.9em;
-}
-
-footer p {
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* Optional: If you add links to your footer */
-footer a {
-    color: #1abc9c; /* Teal color for links, matching other elements */
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 120px;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
 }
