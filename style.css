@@ -1,0 +1,240 @@
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(27, 27, 27);
+    color: #f4f4f4;
+}
+
+header {
+    background-color: #317EFB;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+}
+
+/* Update Message Banner */
+.update-message {
+    background-color: rgb(60, 80, 110);
+    color: #f0f0f0;
+    text-align: center;
+    padding: 10px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
+}
+
+/* Common Card Styles */
+.card-blue-med,
+.card-coral-med,
+.card-gray-lg,
+.card-teal-lg,
+.card-bg-match-med {
+    height: 255px;
+    border-radius: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    position: relative;
+}
+
+.card-blue-med {
+    background-color: rgb(153, 177, 220);
+    color: #000;
+}
+
+.card-coral-med {
+    background-color: rgb(240, 158, 129);
+    color: #000;
+}
+
+.card-gray-lg {
+    background-color: rgb(67, 67, 67);
+    color: inherit;
+}
+
+.card-teal-lg {
+    background-color: rgb(157, 196, 201);
+    color: #000;
+}
+
+.card-bg-match-med {
+    background-color: rgb(27, 27, 27);
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 16px;
+    padding-bottom: 140px;
+    padding-top: 140px;
+}
+
+/* Title Style */
+.wags-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 3.8em;
+    font-weight: 700;
+    color: #f4f4f4;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    padding-left: 4px;
+    font-family: 'Anton', Arial, sans-serif;
+}
+
+/* Common styles for absolutely positioned text within cards */
+.text-gray,
+.text-blue {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -2.4px;
+}
+
+.text-gray {
+    color: rgb(44, 79, 83);
+}
+
+.text-blue {
+    color: rgb(153, 177, 220);
+}
+
+.plus-icon-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: 300;
+}
+
+.card-gray-lg .plus-icon-bottom-right {
+    color: rgb(153, 177, 220);
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    visibility: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 100vh;
+}
+
+.modal-content {
+    background-color: rgb(27, 27, 27);
+    color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    border-radius: 25px;
+    width: 95%;
+    max-width: 768px;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    text-align: left;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.close-button {
+    color: #e0e0e0;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.2s ease-in-out;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Ensure table text is also light */
+.modal-content .scores-table th,
+.modal-content .scores-table td {
+    color: #f0f0f0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-content .scores-table th {
+    font-weight: 600;
+    color: #fff;
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Prevent body and html scrolling when a modal is open */
+html.modal-open-no-scroll,
+body.modal-open-no-scroll {
+    overflow: hidden;
+}
+
+/* Prevent plus icon links from changing color or getting underlined on interaction */
+.plus-icon-link,
+.plus-icon-link:hover,
+.plus-icon-link:active,
+.plus-icon-link:visited,
+.plus-icon-link:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Logo Style */
+.logo-large {
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 120px;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+}
